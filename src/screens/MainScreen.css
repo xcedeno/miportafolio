@@ -1,0 +1,29 @@
+.content {
+    position: relative;
+    
+    
+}
+
+.content > * {
+position: absolute;
+width: 100%;
+transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Animación de entrada */
+.content > *.enter {
+opacity: 0;
+transform: translateX(100%);
+}
+
+/* Animación de salida */
+.content > *.exit {
+opacity: 0;
+transform: translateX(-100%);
+}
+
+/* Componente activo */
+.content > *.active {
+opacity: 1;
+transform: translateX(0);
+}

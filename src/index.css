@@ -1,0 +1,9 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(90deg, #0e0701, #000000, #160c01);
+}
+
+section {
+  padding: 2rem;
+}

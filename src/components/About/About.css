@@ -1,0 +1,48 @@
+#about {
+padding: 2rem;
+background-color: #f9f9f915;
+}
+
+.experience-section {
+margin-top: 2rem;
+}
+
+.experience-toggle-button {
+padding: 0.5rem 1rem;
+background-color: #007bff;
+color: white;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+font-size: 1rem;
+transition: background-color 0.3s ease;
+}
+
+.experience-toggle-button:hover {
+background-color: #0056b3;
+}
+
+.experience-cards {
+    display: flex; /* Asegura que las tarjetas se alineen horizontalmente */
+    flex-wrap: wrap; /* Permite que las tarjetas se envuelvan a la siguiente línea */
+    gap: 1rem;
+    margin-top: 1rem;
+    margin-right: 2rem; /* Añade un margen derecho para evitar el desbordamiento */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+    opacity: 0;
+    box-sizing: border-box;
+}
+
+.experience-cards.expanded {
+max-height: 1000px; /* Ajusta este valor según el contenido */
+opacity: 1;
+}
+
+.experience-cards > * {
+flex: 1 1 calc(25% - 1rem); /* Tres tarjetas por fila */
+min-width: 150px; /* Ancho mínimo de cada tarjeta */
+height: 200px;
+box-sizing: border-box;
+}

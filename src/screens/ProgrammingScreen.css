@@ -26,6 +26,7 @@ margin-bottom: 1rem;
 }
 
 .projects-grid {
-display: flex; /* Cambia a flexbox para organizar las tarjetas horizontalmente */
+display: flexbox; /* Cambia a flexbox para organizar las tarjetas horizontalmente */
 gap: 1.5rem;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }

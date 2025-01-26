@@ -18,17 +18,18 @@ box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 .programming-guide-card-content {
 padding: 1.5rem;
 }
-
 .programming-guide-card-content h3 {
-margin: 0;
-font-size: 1.5rem;
-color: #333;
+    margin: 0;
+    font-size: 1.5rem;
+    color: #ffffff;
 }
+
+
 
 .programming-guide-card-content p {
 margin: 0;
 font-size: 1rem;
-color: #666;
+color: #424040;
 }
 
 .programming-guide-card-icons {

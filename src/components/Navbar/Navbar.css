@@ -114,3 +114,24 @@ transition: transform 0.3s ease;
 .navbar-center .nav-links a:hover {
 transform: translateY(-5px); /* Mueve el texto hacia arriba */
 }
+
+@media (max-width: 768px) {
+.navbar {
+    flex-direction: column; /* Apila los elementos verticalmente */
+    align-items: flex-start;
+}
+
+.navbar-center {
+    justify-content: flex-start;
+    margin-top: 1rem;
+}
+
+.nav-links {
+    flex-direction: column; /* Apila los enlaces verticalmente */
+    gap: 0.5rem;
+}
+
+.navbar-right {
+    margin-top: 1rem;
+}
+}

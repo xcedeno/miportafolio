@@ -1,0 +1,56 @@
+.programming-guide-card {
+position: relative;
+width: 300px;
+height: 200px;
+margin: 1rem;
+border-radius: 8px;
+overflow: hidden;
+background-color: #ffffff1f;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.programming-guide-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.programming-guide-card-content {
+padding: 1.5rem;
+}
+
+.programming-guide-card-content h3 {
+margin: 0;
+font-size: 1.5rem;
+color: #333;
+}
+
+.programming-guide-card-content p {
+margin: 0;
+font-size: 1rem;
+color: #666;
+}
+
+.programming-guide-card-icons {
+position: absolute;
+bottom: 1rem;
+right: 1rem;
+display: flex;
+gap: 0.5rem;
+align-items: center;
+}
+
+.tech-icon {
+width: 24px;
+height: 24px;
+}
+
+.github-icon {
+color: #0ab13c;
+font-size: 1.5rem;
+transition: color 0.3s ease;
+}
+
+.github-icon:hover {
+color: #007bff;
+}

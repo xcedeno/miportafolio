@@ -1,11 +1,19 @@
 #projects {
-padding: 2rem;
-background-color: #f9f9f90e;
+    padding: 2rem;
+    background-color: #f9f9f90e;
+    width: 97%;
+    
 }
 
 .projects-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-gap: 1.5rem;
-padding: 1rem;
+    display: flex; /* Cambia a flexbox para organizar las tarjetas horizontalmente */
+    flex-wrap: wrap; /* Permite que las tarjetas se envuelvan a la siguiente línea */
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+.projects-grid > * {
+    flex: 1 1 calc(25% - 1.5rem); /* Cuatro tarjetas por fila */
+    min-width: 150px; /* Ancho mínimo de cada tarjeta */
+    box-sizing: border-box; /* Incluye el padding y el borde en el tamaño total del elemento */
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './About.css';
 import ExperienceCard from '../ExperienceCard/ExperienceCard';
+import EducationCard from '../EducationCard/EducationCard';
 
 interface AboutProps {
 className?: string;
@@ -8,10 +9,15 @@ className?: string;
 
 const About: React.FC<AboutProps> = ({ className }) => {
 const [isExpanded, setIsExpanded] = useState<boolean>(false);
+const [isExpandedEducation, setIsExpandedEducation] = useState<boolean>(false);
+
 
 const toggleExpanded = () => {
 setIsExpanded(!isExpanded);
 };
+const toggleExpandedEducation = () => {
+    setIsExpandedEducation(!isExpandedEducation);
+  };
 
 // Datos de experiencia laboral
 const experienceData = [
@@ -64,6 +70,33 @@ const experienceData = [
     'Configuré y mantuve redes alámbricas e inalámbricas, asegurando la conectividad y seguridad de la red.',
 },
 ];
+// Datos de formación profesional
+const educationData = [
+{
+    institution: 'Instituto Universitario de Tecnologia Del Mar',
+    image: '/src/assets/iutemar.jpg', // Ruta al logo de la universidad
+    degree: 'T.S.U en Tecnologia Naval Mencion Navegacion y Pesca',
+    duration: '2025',
+    description:
+    'Estudié una licenciatura en informática con enfoque en desarrollo de software y administración de redes.',
+},
+{
+    institution: 'Universidad Nacional Experimental de La Fuerza Armada',
+    image: '/src/assets/unefa.jpg', // Ruta al logo del instituto
+    degree: 'Ingeniero En Sistemas',
+    duration: '2025',
+    description:
+    'Obtuve una certificación en redes y seguridad informática, especializándome en firewalls y VPNs.',
+},
+{
+    institution: 'Escuela Tecnica Industrial Alejandro Hernandez',
+    image: '/src/assets/eti.jpg', // Ruta al logo del instituto
+    degree: 'Tecnico Medio en Electricidad',
+    duration: '2003',
+    description:
+    'Obtuve una certificación en redes y seguridad informática, especializándome en firewalls y VPNs.',
+},
+];
 
 return (
 <section id="about" className={className}>
@@ -88,6 +121,24 @@ return (
             position={exp.position}
             duration={exp.duration}
             description={exp.description}
+        />
+        ))}
+    </div>
+    </div>
+    {/* Sección de Formación Profesional */}
+    <div className="education-section">
+        <button onClick={toggleExpandedEducation} className="education-toggle-button">
+        Formación Profesional {isExpandedEducation ? '▲' : '▼'}
+    </button>
+    <div className={`education-cards ${isExpandedEducation ? 'expanded' : ''}`}>
+        {educationData.map((edu, index) => (
+        <EducationCard
+            key={index}
+            institution={edu.institution}
+            image={edu.image}
+            degree={edu.degree}
+            duration={edu.duration}
+            description={edu.description}
         />
         ))}
     </div>

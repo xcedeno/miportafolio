@@ -1,14 +1,15 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Importar useNavigate
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { FaLinkedin, FaGithub, FaEnvelope, FaBars } from 'react-icons/fa';
 import './Navbar.css';
-import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
 
 const Navbar: React.FC = () => {
-const navigate = useNavigate(); // Hook para la navegación
+const navigate = useNavigate();
+const [isMenuOpen, setIsMenuOpen] = useState(false); // Estado para controlar el menú
 
-// Función para manejar la navegación
 const handleNavigation = (path: string) => {
-navigate(path); // Navegar a la ruta especificada
+navigate(path);
+setIsMenuOpen(false); // Cierra el menú después de navegar
 };
 
 return (
@@ -18,7 +19,13 @@ return (
     <h1>Xavier Cedeno</h1>
     </div>
 
-    <div className="navbar-center">
+    {/* Botón de menú hamburguesa (solo visible en móviles) */}
+    <div className="navbar-hamburger" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+    <FaBars />
+    </div>
+
+    {/* Menú de navegación (oculto en móviles cuando está cerrado) */}
+    <div className={`navbar-center ${isMenuOpen ? 'active' : ''}`}>
     <ul className="nav-links">
         <li>
         <a href="/" onClick={(e) => { e.preventDefault(); handleNavigation('/'); }}>Inicio</a>

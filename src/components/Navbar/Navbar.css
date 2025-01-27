@@ -1,26 +1,27 @@
-/* Estilos base del Navbar */
 /* Estilos base del Navbar con glassmorfismo */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: rgba(0, 0, 0, 0.178); /* Fondo semitransparente */
-    -webkit-backdrop-filter: blur(10px); /* Desenfoque */
-    backdrop-filter: blur(10px); /* Desenfoque */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Borde sutil */
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 1rem 2rem;
+background-color: rgba(0, 0, 0, 0.281);
+-webkit-backdrop-filter: blur(10px);
+backdrop-filter: blur(10px);
+border-bottom: 1px solid rgba(255, 255, 255, 0.11);
+position: sticky;
+top: 0;
+z-index: 1000;
 }
+
 h1 {
-    color: white;
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
+color: white;
+font-size: 1.8rem;
+margin-bottom: 0.5rem;
 }
+
 .navbar-left {
-    display: flex;
-    align-items: center;
+display: flex;
+align-items: center;
 }
 
 .navbar-left .profile-photo {
@@ -29,9 +30,12 @@ height: 100px;
 border-radius: 50%;
 margin-right: 1rem;
 }
+
 .navbar-center {
-    margin-left: -25rem; /* Ajusta este valor según sea necesario */
+display: flex;
+align-items: center;
 }
+
 .navbar-center .nav-links {
 list-style: none;
 display: flex;
@@ -59,20 +63,6 @@ transition: background-position 0.5s ease;
 background-position: -100% 0;
 }
 
-.dropdown-menu {
-position: absolute;
-top: 100%;
-left: 0;
-background-color: #444;
-list-style: none;
-padding: 0.5rem;
-border-radius: 4px;
-}
-
-.dropdown-menu li {
-margin: 0.5rem 0;
-}
-
 .navbar-right {
 display: flex;
 gap: 1rem;
@@ -86,52 +76,45 @@ transition: color 0.3s ease;
 }
 
 .navbar-right a:hover {
-color: #1fc02d; /* Cambia el color al pasar el cursor */
+color: #1fc02d;
 }
 
-/* Animación del gradiente */
-@keyframes gradientMove {
-0% {
-    background-position: 0% 50%;
-}
-50% {
-    background-position: 100% 50%;
-}
-100% {
-    background-position: 0% 50%;
-}
+/* Estilos para el menú hamburguesa */
+.navbar-hamburger {
+display: none; /* Oculto por defecto */
+font-size: 1.5rem;
+color: white;
+cursor: pointer;
 }
 
-.navbar-center .nav-links a {
-animation: gradientMove 5s ease infinite;
-}
-/* Efecto de movimiento al pasar el cursor */
-.navbar-center .nav-links a {
-display: inline-block;
-transition: transform 0.3s ease;
-}
-
-.navbar-center .nav-links a:hover {
-transform: translateY(-5px); /* Mueve el texto hacia arriba */
-}
-
+/* Estilos responsivos */
 @media (max-width: 768px) {
-.navbar {
-    flex-direction: column; /* Apila los elementos verticalmente */
-    align-items: flex-start;
+.navbar-hamburger {
+    display: block; /* Mostrar en móviles */
 }
 
 .navbar-center {
-    justify-content: flex-start;
-    margin-top: 1rem;
+    display: none; /* Ocultar el menú en móviles por defecto */
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    padding: 1rem;
+}
+
+.navbar-center.active {
+    display: flex; /* Mostrar el menú cuando está activo */
+    
 }
 
 .nav-links {
-    flex-direction: column; /* Apila los enlaces verticalmente */
+    flex-direction: column;
     gap: 0.5rem;
 }
 
 .navbar-right {
-    margin-top: 1rem;
+    display: none; /* Ocultar íconos en móviles */
 }
 }

@@ -1,15 +1,19 @@
-
+.networking-screen {
+    padding: 2rem 1rem;
+    text-align: center;
+}
 
 .networking-screen h1 {
-font-size: 2.5rem;
-color: #ffffff;
-margin-bottom: 1rem;
+    font-size: clamp(1.8rem, 4vw, 2.5rem); /* Tamaño adaptable */
+    color: #ffffff;
+    margin-bottom: 1rem;
 }
 
 .networking-screen p {
-font-size: 1.2rem;
-color: #8b8989;
-margin-bottom: 2rem;
+    font-size: clamp(1rem, 2.5vw, 1.2rem); /* Tamaño adaptable */
+    color: #8b8989;
+    margin-bottom: 2rem;
+    line-height: 1.6;
 }
 
 .networking-screen .networking-content {
@@ -17,17 +21,25 @@ margin-bottom: 2rem;
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
 }
 
-.networking-screen .content h2 {
-font-size: 2rem;
-color: #ffffff;
-margin-bottom: 1rem;
+.networking-screen .networking-content h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem); /* Tamaño adaptable */
+    color: #ffffff;
+    margin-bottom: 1.5rem;
 }
 
 .projects-grid {
-display: flexbox;
-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-gap: 1.5rem;
+    display: grid; /* Cambiado a grid para mejor flexibilidad */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajustable según el ancho */
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: stretch;
+}
+
+
+
+.projects-grid > *:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }

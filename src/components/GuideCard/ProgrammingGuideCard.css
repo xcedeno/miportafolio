@@ -1,35 +1,58 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .programming-guide-card {
-position: relative;
-width: 300px;
-height: 200px;
-margin: 1rem;
-border-radius: 8px;
-overflow: hidden;
-background-color: #ffffff1f;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    width: 300px;
+    height: 200px;
+    margin: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #ffffff1f;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0; /* Inicialmente oculto */
+    animation: fadeIn 0.9s forwards; /* Aplicar animación */
+}
+
+.programming-guide-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.programming-guide-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.programming-guide-card:nth-child(3) {
+    animation-delay: 0.3s;
 }
 
 .programming-guide-card:hover {
-transform: translateY(-5px);
-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .programming-guide-card-content {
-padding: 1.5rem;
+    padding: 1.5rem;
 }
+
 .programming-guide-card-content h3 {
     margin: 0;
     font-size: 1.5rem;
     color: #ffffff;
 }
 
-
-
 .programming-guide-card-content p {
-margin: 0;
-font-size: 1rem;
-color: #424040;
+    margin: 0;
+    font-size: 1rem;
 }
 
 .programming-guide-card-icons {

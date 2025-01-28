@@ -15,8 +15,11 @@ setIsMenuOpen(false); // Cierra el menú después de navegar
 return (
 <nav className="navbar">
     <div className="navbar-left">
-    <img src="/src/assets/xavier.jpg" alt="Profile" className="profile-photo" />
-    <h1>Xavier Cedeno</h1>
+        <img src="/src/assets/xavier.jpg" alt="Profile" className="profile-photo" />
+        <div className="text-container">
+            <h1>Xavier Cedeno</h1>
+            <p>Desarrollador Web / Analista de Sistemas</p>
+        </div>
     </div>
 
     {/* Botón de menú hamburguesa (solo visible en móviles) */}
@@ -29,9 +32,6 @@ return (
     <ul className="nav-links">
         <li>
         <a href="/" onClick={(e) => { e.preventDefault(); handleNavigation('/'); }}>Inicio</a>
-        </li>
-        <li>
-        <a href="/about" onClick={(e) => { e.preventDefault(); handleNavigation('/about'); }}>Acerca de mí</a>
         </li>
         <li>
         <a href="/projects" onClick={(e) => { e.preventDefault(); handleNavigation('/projects'); }}>Proyectos</a>

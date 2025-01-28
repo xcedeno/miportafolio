@@ -1,28 +1,96 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .guide-card {
-background-color: #ffffff;
-border-radius: 8px;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-padding: 1.5rem;
-margin: 1rem;
-max-width: 300px;
-text-align: center;
-transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #0000001f;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin: 1rem;
+    max-width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0; /* Inicialmente oculto */
+    animation: fadeIn 0.9s forwards; /* Aplicar animación */
+}
+
+.guide-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.guide-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.guide-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.guide-card:nth-child(4) {
+    animation-delay: 0.4s;
 }
 
 .guide-card:hover {
-transform: translateY(-5px);
-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
+.guide-card-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    position: relative; /* Necesario para el efecto de borde */
+    transition: transform 0.3s ease;
+}
+
+/* Efecto de borde animado */
+.guide-card-image::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.guide-card:hover .guide-card-image::before {
+border-color: #00ff00; /* Color del borde */
+animation: glow 1.5s infinite linear; /* Animación de luz */
+}
+
+/* Animación de luz */
+@keyframes glow {
+0% {
+    box-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00, 0 0 20px #00ff00;
+}
+50% {
+    box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00;
+}
+100% {
+    box-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00, 0 0 20px #00ff00;
+}
+}
 .guide-card h3 {
 font-size: 1.5rem;
 margin-bottom: 0.5rem;
-color: #333;
+color: #ffffff;
 }
 
 .guide-card p {
 font-size: 1rem;
-color: #666;
+color: #9c9a9a;
 margin-bottom: 1rem;
 }
 

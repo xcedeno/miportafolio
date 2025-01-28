@@ -35,7 +35,7 @@ return (
     relacionados con el desarrollo de software.
     </p>
     <h2>Proyectos Destacados</h2>
-    <div className="content">
+    <div className="programming-content">
     
     <div className="projects-grid">
         {projects.map((project, index) => (

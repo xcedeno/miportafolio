@@ -5,6 +5,7 @@ import Projects from '../components/Projects/Projects';
 import Skills from '../components/Skills/Skills';
 import './MainScreen.css';
 
+
 const MainScreen: React.FC = () => {
 const location = useLocation();
 const [transitionClass, setTransitionClass] = useState<string>('active');

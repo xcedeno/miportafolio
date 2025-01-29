@@ -1,54 +1,54 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import {FaBars } from 'react-icons/fa';
 import './Navbar.css';
-import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
 
-interface NavbarProps {
-onNavigate: (component: string) => void; // Función para cambiar el componente activo
-}
+const Navbar: React.FC = () => {
+const navigate = useNavigate();
+const [isMenuOpen, setIsMenuOpen] = useState(false); // Estado para controlar el menú
 
-const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
-
-
-
+const handleNavigation = (path: string) => {
+navigate(path);
+setIsMenuOpen(false); // Cierra el menú después de navegar
+};
 
 return (
 <nav className="navbar">
     <div className="navbar-left">
-    <img src="/src/assets/xavier.jpg" alt="Profile" className="profile-photo" />
-    <h1>Xavier Cedeno</h1>
+        <img src="/assets/images/xavier.jpg" alt="Profile" className="profile-photo" />
+        <div className="text-container">
+            <h1>Xavier Cedeno</h1>
+            <p>Desarrollador Web / Analista de Sistemas</p>
+        </div>
     </div>
-    
-    <div className="navbar-center">
+
+    {/* Botón de menú hamburguesa (solo visible en móviles) */}
+    <div className="navbar-hamburger" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+    <FaBars />
+    </div>
+
+    {/* Menú de navegación (oculto en móviles cuando está cerrado) */}
+    <div className={`navbar-center ${isMenuOpen ? 'active' : ''}`}>
     <ul className="nav-links">
         <li>
-        <a href="#about" onClick={() => onNavigate('about')}>Acerca de mi</a>
+        <a href="/" onClick={(e) => { e.preventDefault(); handleNavigation('/'); }}>Inicio</a>
         </li>
         <li>
-        <a href="#projects" onClick={() => onNavigate('projects')}>Projects</a>
+        <a href="/projects" onClick={(e) => { e.preventDefault(); handleNavigation('/projects'); }}>Proyectos</a>
         </li>
         <li>
-        <a href="#contact" onClick={() => onNavigate('contact')}>Contact</a>
+        <a href="/contact" onClick={(e) => { e.preventDefault(); handleNavigation('/skills'); }}>Skills</a>
         </li>
         <li>
-        
-        <a href="#blog">Blog</a>
+        <a href="/blog" onClick={(e) => { e.preventDefault(); handleNavigation('/blog'); }}>Blog</a>
         </li>
-            <li>
-                <a href="#resume">Resume</a>
-            </li>
-        
+        <li>
+        <a href="/resume" onClick={(e) => { e.preventDefault(); handleNavigation('/resume'); }}>Currículum</a>
+        </li>
     </ul>
     </div>
-    <div className="navbar-right">
-    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" title="LinkedIn">
-        <FaLinkedin />
-    </a>
-    <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub">
-        <FaGithub />
-    </a>
-    <a href="mailto:example@example.com" title="Email">
-        <FaEnvelope />
-    </a>
-    </div>
+
+
 </nav>
 );
 };

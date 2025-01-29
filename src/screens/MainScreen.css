@@ -3,10 +3,13 @@
     
     
 }
+section {
+    padding: 0;
+}
 
 .content > * {
 position: absolute;
-width: 100%;
+width: auto;
 transition: opacity 0.5s ease, transform 0.5s ease;
 }
 

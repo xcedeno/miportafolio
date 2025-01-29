@@ -19,7 +19,7 @@ return (
     </div>
     <div className="programming-guide-card-icons">
     {technologies.map((tech, index) => (
-        <img key={index} src={`/src/assets/${tech}.png`} alt={tech} className="tech-icon" />
+        <img key={index} src={`/assets/images/${tech}.png`} alt={tech} className="tech-icon" />
     ))}
     <a href={githubLink} target="_blank" rel="noopener noreferrer" className="github-icon" title="GitHub Repository">
         <FaGithub />

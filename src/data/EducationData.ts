@@ -1,8 +1,8 @@
  // Datos de formación profesional
- export const educationData = [
+export const educationData = [
     {
         institution: 'Instituto Universitario de Tecnologia Del Mar',
-        image: '/src/assets/iutemar.jpg', // Ruta al logo de la universidad
+        image: '/assets//images/iutemar.jpg', // Ruta al logo de la universidad
         degree: 'T.S.U en Tecnologia Naval Mencion Navegacion y Pesca',
         duration: '2025',
         description:
@@ -10,7 +10,7 @@
     },
     {
         institution: 'Universidad Nacional Experimental de La Fuerza Armada',
-        image: '/src/assets/unefa.jpg', // Ruta al logo del instituto
+        image: '/assets/images/unefa.jpg', // Ruta al logo del instituto
         degree: 'Ingeniero En Sistemas',
         duration: '2025',
         description:
@@ -18,7 +18,7 @@
     },
     {
         institution: 'Escuela Tecnica Industrial Alejandro Hernandez',
-        image: '/src/assets/eti.jpg', // Ruta al logo del instituto
+        image: '/assets/images/eti.jpg', // Ruta al logo del instituto
         degree: 'Tecnico Medio en Electricidad',
         duration: '2003',
         description:

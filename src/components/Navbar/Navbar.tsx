@@ -15,7 +15,7 @@ setIsMenuOpen(false); // Cierra el menú después de navegar
 return (
 <nav className="navbar">
     <div className="navbar-left">
-        <img src="/src/assets/xavier.jpg" alt="Profile" className="profile-photo" />
+        <img src="/assets/images/xavier.jpg" alt="Profile" className="profile-photo" />
         <div className="text-container">
             <h1>Xavier Cedeno</h1>
             <p>Desarrollador Web / Analista de Sistemas</p>

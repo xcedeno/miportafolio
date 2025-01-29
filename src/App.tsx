@@ -7,6 +7,7 @@ import NetworkingScreen from './screens/NetworkingScreen';
 import About from './components/About/About';
 import Projects from './components/Projects/Projects';
 import Footer from './components/footer/Footer';
+import Skills from './components/Skills/Skills';
 
 const App: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ const App: React.FC = () => {
           <Route path="/" element={<MainScreen />} /> {/* Ruta principal */}
           <Route path="/about" element={<About />} /> {/* Nueva pantalla */}
           <Route path="/projects" element={<Projects />} /> {/* Nueva pantalla */}
+          <Route path="/skills" element={<Skills />} /> {/* Nueva pantalla */}
           <Route path="/programming" element={<ProgrammingScreen />} /> {/* Nueva pantalla */}
           <Route path="/networking" element={<NetworkingScreen />} /> {/* Nueva pantalla */}
         </Routes>

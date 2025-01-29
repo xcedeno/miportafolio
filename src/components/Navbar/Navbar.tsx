@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaLinkedin, FaGithub, FaEnvelope, FaBars } from 'react-icons/fa';
+import {FaBars } from 'react-icons/fa';
 import './Navbar.css';
 
 const Navbar: React.FC = () => {
@@ -37,7 +37,7 @@ return (
         <a href="/projects" onClick={(e) => { e.preventDefault(); handleNavigation('/projects'); }}>Proyectos</a>
         </li>
         <li>
-        <a href="/contact" onClick={(e) => { e.preventDefault(); handleNavigation('/contact'); }}>Contacto</a>
+        <a href="/contact" onClick={(e) => { e.preventDefault(); handleNavigation('/skills'); }}>Skills</a>
         </li>
         <li>
         <a href="/blog" onClick={(e) => { e.preventDefault(); handleNavigation('/blog'); }}>Blog</a>
@@ -48,17 +48,7 @@ return (
     </ul>
     </div>
 
-    <div className="navbar-right">
-    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" title="LinkedIn">
-        <FaLinkedin />
-    </a>
-    <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub">
-        <FaGithub />
-    </a>
-    <a href="mailto:example@example.com" title="Email">
-        <FaEnvelope />
-    </a>
-    </div>
+
 </nav>
 );
 };

@@ -1,0 +1,86 @@
+/* Skills.css */
+#skills {
+    padding: 2rem;
+    background-color: #f9f9f915;
+    opacity: 0; /* Inicialmente oculto */
+    animation: fadeIn 1.5s forwards; /* Aplicar animación */
+    display: flex;
+    flex-direction: column;
+    /* Asegura que ocupe toda la altura del viewport */
+
+
+}
+.skills-container {
+display: flex;
+flex-wrap: wrap;
+gap: 20px;
+justify-content: center;
+color: white;
+opacity: 0; /* Inicialmente oculto */
+animation: fadeIn 1.5s forwards; /* Aplicar animación */
+
+}
+h2 {
+color: white;
+text-align: center;
+font-size: 2rem;
+margin-bottom: 2rem;
+}
+
+.skill-card {
+width: 120px;
+height: 120px;
+background-color: #ffffff00;
+border-radius: 10px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+transition: all 0.3s ease;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.skill-card.expanded {
+width: 300px;
+background-color: #ffffff0e;
+height: auto;
+padding: 20px;
+}
+
+.skill-icon {
+    width: 100px;
+    height: 100px;
+    background-size:contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 0%;
+    margin-bottom: 1rem;
+}
+
+.skill-icon i {
+font-size: 40px; /* Ajusta el tamaño del icono */
+margin-bottom: 10px;
+}
+
+.skill-icon span {
+font-size: 16px;
+font-weight: bold;
+}
+
+.skills-list {
+margin-top: 20px;
+width: 100%;
+}
+
+.skills-list ul {
+list-style-type: none;
+padding: 0;
+margin: 0;
+}
+
+.skills-list li {
+font-size: 14px;
+margin: 5px 0;
+text-align: left;
+}

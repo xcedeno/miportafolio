@@ -19,19 +19,19 @@ const categories = [
     title: 'Redes',
     description: 'Aprende sobre configuraciones de redes y seguridad informática.',
     link: '/networking',
-    image: 'https://cdn-icons-png.flaticon.com/512/2282/2282188.png',
+    image: 'https://cdn-icons-png.flaticon.com/128/2177/2177461.png',
 },
 {
     title: 'Diseño Gráfico',
     description: 'Descubre recursos y proyectos de diseño gráfico y UX/UI.',
     link: '/graphic-design',
-    image: 'https://cdn-icons-png.flaticon.com/512/3242/3242257.png',
+    image: 'https://cdn-icons-png.flaticon.com/128/2779/2779775.png',
 },
 {
     title: 'Base de Datos',
     description: 'Guías y proyectos sobre administración y diseño de bases de datos.',
     link: '/databases',
-    image: 'https://cdn-icons-png.flaticon.com/512/4492/4492311.png',
+    image: 'https://cdn-icons-png.flaticon.com/128/18771/18771123.png',
 },
 ];
 

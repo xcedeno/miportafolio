@@ -3,7 +3,18 @@
     background-color: #f9f9f915;
     opacity: 0; /* Inicialmente oculto */
     animation: fadeIn 1.5s forwards; /* Aplicar animación */
+    display: flex;
+    flex-direction: column;
+    /* Asegura que ocupe toda la altura del viewport */
+
 }
+p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: white;
+}
+
 
 .experience-section .education-section {
     margin-top: 2rem;

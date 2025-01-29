@@ -3,6 +3,9 @@
     
     
 }
+section {
+    padding: 0;
+}
 
 .content > * {
 position: absolute;

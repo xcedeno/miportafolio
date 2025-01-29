@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import About from '../components/About/About';
 import Projects from '../components/Projects/Projects';
-import Contacts from '../components/Contacts/Contacts';
+import Skills from '../components/Skills/Skills';
 import './MainScreen.css';
 
 const MainScreen: React.FC = () => {
@@ -16,8 +16,8 @@ switch (location.pathname) {
     return 'about';
     case '/projects':
     return 'projects';
-    case '/contact':
-    return 'contact';
+    case '/skills':
+    return 'skills';
     default:
     return 'about'; // Ruta por defecto
 }
@@ -30,11 +30,11 @@ setTransitionClass('active'); // Cuando el componente se monta, lo mostramos
 }, [activeComponent]);
 
 return (
-<div className="content">
+<section id="content">
     {activeComponent === 'about' && <About className={transitionClass} />}
     {activeComponent === 'projects' && <Projects className={transitionClass} />}
-    {activeComponent === 'contact' && <Contacts className={transitionClass} />}
-</div>
+    {activeComponent === 'skills' && <Skills className={transitionClass} />}
+</section>
 );
 };
 

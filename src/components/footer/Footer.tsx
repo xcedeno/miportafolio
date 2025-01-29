@@ -5,7 +5,7 @@ const Footer = () => {
     return (
         <footer className="footer">
             <div className="footer-content">
-                <p>&copy; 2023 Xavier Cedeno. Todos los derechos reservados.</p>
+                <p>&copy; 2025 Xavier Cedeño. Todos los derechos reservados.</p>
                 <div className="social-icons">
                     <a href="https://www.linkedin.com/in/xavier-cedeno" target="_blank" rel="noopener noreferrer" title='LinkedIn'>
                         <i className="fab fa-linkedin"></i>

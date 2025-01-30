@@ -10,10 +10,32 @@
     flex-wrap: wrap; /* Permite que las tarjetas se envuelvan a la siguiente línea */
     gap: 1.5rem;
     padding: 1rem;
+    justify-content: center;
 }
 
 .projects-grid > * {
     flex: 1 1 calc(25% - 1.5rem); /* Cuatro tarjetas por fila */
     min-width: 150px; /* Ancho mínimo de cada tarjeta */
     box-sizing: border-box; /* Incluye el padding y el borde en el tamaño total del elemento */
+}
+/* Media queries para ajustar el tamaño de las tarjetas en diferentes resoluciones */
+@media (max-width: 1200px) {
+    .projects-grid > * {
+        flex: 1 1 calc(33.333% - 1.5rem); /* Tres tarjetas por fila */
+    }
+}
+#projects {
+    width: auto;
+}
+
+@media (max-width: 992px) {
+    .projects-grid > * {
+        flex: 1 1 calc(50% - 1.5rem); /* Dos tarjetas por fila */
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-grid > * {
+        flex: 1 1 calc(100% - 1.5rem); /* Una tarjeta por fila */
+    }
 }

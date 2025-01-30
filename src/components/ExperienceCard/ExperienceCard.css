@@ -1,3 +1,12 @@
+.experience-cards {
+    display:flexbox;
+    flex-wrap: wrap; /* Permite que las tarjetas se envuelvan a la siguiente línea */
+    gap: 1rem;
+    justify-content: center; /* Centra las tarjetas horizontalmente */
+    margin-top: 1rem;
+}
+
+
 .experience-card {
 position: relative;
 width: 300px;
@@ -7,6 +16,7 @@ border-radius: 8px;
 overflow: hidden;
 cursor: pointer;
 transition: transform 0.3s ease, box-shadow 0.3s ease;
+flex: 0 1 300px;
 }
 
 .experience-card:hover {
@@ -33,16 +43,17 @@ width: 100%;
 padding: 1rem;
 background-color: rgba(0, 0, 0, 0.7);
 color: white;
+
 }
 
 .experience-card-content h3 {
 margin: 0;
-font-size: 1.5rem;
+font-size: 1.2rem;
 }
 
 .experience-card-content p {
 margin: 0;
-font-size: 1rem;
+font-size: 0.7rem;
 }
 
 .experience-modal-overlay {
@@ -59,9 +70,11 @@ z-index: 1000;
 }
 
 .experience-modal {
-background-color: white;
+background-color: rgba(0, 0, 0, 0.637);
 padding: 2rem;
 border-radius: 8px;
+-webkit-backdrop-filter: blur(10px);
+backdrop-filter: blur(10px);
 max-width: 500px;
 width: 90%;
 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -70,17 +83,17 @@ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 .experience-modal h2 {
 margin-top: 0;
 font-size: 2rem;
-color: #333;
+color: #ffffff;
 }
 
 .experience-modal h3 {
 font-size: 1.5rem;
-color: #666;
+color: #d6c7c7;
 }
 
 .experience-modal p {
 font-size: 1rem;
-color: #666;
+color: #ffffff;
 }
 
 .experience-modal button {

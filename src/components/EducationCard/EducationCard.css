@@ -8,6 +8,7 @@ border-radius: 8px;
 overflow: hidden;
 cursor: pointer;
 transition: transform 0.3s ease, box-shadow 0.3s ease;
+flex: 0 1 300px;
 }
 
 .education-card:hover {
@@ -32,18 +33,18 @@ bottom: 0;
 left: 0;
 width: 100%;
 padding: 1rem;
-background-color: rgba(0, 0, 0, 0.7);
+background-color: rgba(0, 0, 0, 0.753);
 color: white;
 }
 
 .education-card-content h3 {
 margin: 0;
-font-size: 1.5rem;
+font-size: 1.2rem;
 }
 
 .education-card-content p {
 margin: 0;
-font-size: 1rem;
+font-size: 0.8rem;
 }
 
 /* Estilos del modal */
@@ -58,15 +59,22 @@ display: flex;
 justify-content: center;
 align-items: center;
 z-index: 1000;
+transition: opacity 0.3s ease, visibility 0.3s ease; /* Transición para el efecto de desvanecimiento */
 }
 
 .education-modal {
-background-color: white;
-padding: 2rem;
-border-radius: 8px;
-max-width: 500px;
-width: 90%;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-20px); /* Posición inicial para el desplazamiento */
+    transition: transform 0.3s ease; /* Transición para el efecto de desplazamiento */
+}
+.education-modal-overlay.active {
+    opacity: 1; /* Mostrar el overlay */
+    visibility: visible; /* Mostrar el overlay */
 }
 
 .education-modal h2 {

@@ -17,7 +17,7 @@ return (
     <div className="navbar-left">
         <img src="/assets/images/xavier.jpg" alt="Profile" className="profile-photo" />
         <div className="text-container">
-            <h1>Xavier Cedeno</h1>
+            <h1>Xavier Cedeño</h1>
             <p>Desarrollador Web / Analista de Sistemas</p>
         </div>
     </div>

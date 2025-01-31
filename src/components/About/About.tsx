@@ -25,11 +25,12 @@ const About: React.FC<AboutProps> = ({ className }) => {
         <section id="about" className={className}>
             <h2>Acerca de Mí</h2>
             <p>
-                Soy un profesional en soporte técnico con amplia experiencia en el área informática. Mi
-                especialidad es ofrecer soluciones efectivas para problemas de software y hardware de equipos
-                informáticos. Además, cuento con experiencia en el mantenimiento y configuración de
-                ordenadores, redes alámbricas e inalámbricas. Me mantengo actualizado sobre las últimas
-                tendencias tecnológicas y tengo un enfoque constante en el aprendizaje continuo.
+            Analista de sistemas con más de 10 años de experiencia en soporte técnico, 
+            configuración de redes y mantenimiento de infraestructura tecnológica. 
+            Especializado en la resolución de problemas de hardware y software, 
+            implementación de redes alámbricas e inalámbricas, y gestión de servidores. 
+            Apasionado por la innovación tecnológica y el aprendizaje continuo. 
+            Busco oportunidades para contribuir en proyectos desafiantes y seguir creciendo profesionalmente.
             </p>
             <div className="experience-section">
                 <button onClick={toggleExpanded} className="experience-toggle-button">
@@ -43,7 +44,7 @@ const About: React.FC<AboutProps> = ({ className }) => {
                             image={exp.image}
                             position={exp.position}
                             duration={exp.duration}
-                            description={exp.description}
+                            description={Array.isArray(exp.description) ? exp.description : [exp.description]}
                         />
                     ))}
                 </div>

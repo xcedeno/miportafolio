@@ -5,8 +5,11 @@ export const experienceData = [
         image: '/assets/images/hotel-ikin.jpg', // Ruta al logo de Hotel Ikin
         position: 'Analista de Sistemas',
         duration: 'Enero 2020 - Diciembre 2022',
-        description:
-        'Brindé soporte técnico a usuarios internos, resolviendo problemas de hardware y software, y manteniendo la infraestructura de red.',
+        description:[
+            ' *Responsable del departamento de soporte técnico y tecnología, incluyendo servidores e infraestructura tecnológica.',
+            '*Configuración y supervisión de equipos de oficina y habitaciones del hotel.',
+            '*Implementación de soluciones tecnológicas para mejorar la eficiencia operativa.'
+        ],
     },
     {
         company: 'Procesadora Karibe C.A',

@@ -2,57 +2,40 @@ import React, { useState } from 'react';
 import './ExperienceCard.css';
 
 interface ExperienceCardProps {
-company: string;
-image: string;
-position: string;
-duration: string;
-description: string;
+    company: string;
+    image: string;
+    position: string;
+    duration: string;
+    description: string[];
 }
 
-const ExperienceCard: React.FC<ExperienceCardProps> = ({
-company,
-image,
-position,
-duration,
-description,
-}) => {
-const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+const ExperienceCard: React.FC<ExperienceCardProps> = ({ company, image, position, duration, description }) => {
+    const [isExpanded, setIsExpanded] = useState(false);
 
-const toggleModal = () => {
-setIsModalOpen(!isModalOpen);
-};
+    const toggleExpanded = () => {
+        setIsExpanded(!isExpanded);
+    };
 
-// Clase dinámica para el fondo
-const backgroundStyle = {
-backgroundImage: `url(${image})`,
-};
-
-return (
-<>
-    <div className="experience-card" onClick={toggleModal}>
-    <div
-        className="experience-card-background"
-        style={backgroundStyle} // Usamos la clase dinámica
-    ></div>
-    <div className="experience-card-content">
-        <h3>{company}</h3>
-        <p>{position}</p>
-    </div>
-    </div>
-
-    {isModalOpen && (
-    <div className="experience-modal-overlay" onClick={toggleModal}>
-        <div className="experience-modal" onClick={(e) => e.stopPropagation()}>
-        <h2>{company}</h2>
-        <h3>{position}</h3>
-        <p><strong>Duración:</strong> {duration}</p>
-        <p><strong>Descripción:</strong> {description}</p>
-        <button onClick={toggleModal}>Cerrar</button>
+    return (
+        <div className={`experience-card ${isExpanded ? 'expanded' : ''}`} onClick={toggleExpanded}>
+            <div
+                className="experience-card-background"
+                style={{ backgroundImage: `url(${image})` }}
+            ></div>
+            <div className="experience-card-content">
+                <h3>{company}</h3>
+                <p>{position}</p>
+                <p>{duration}</p>
+                {isExpanded && (
+                    <div className="experience-card-description">
+                        {description.map((line, index) => (
+                            <p key={index} dangerouslySetInnerHTML={{ __html: line }}></p>
+                        ))}
+                    </div>
+                )}
+            </div>
         </div>
-    </div>
-    )}
-</>
-);
+    );
 };
 
 export default ExperienceCard;

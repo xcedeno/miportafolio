@@ -114,6 +114,19 @@ min-width: 150px; /* Ancho mínimo de cada tarjeta */
 
 @media (max-width: 768px) {
     .education-cards > *, .experience-cards > * {
+        flex: 1 1 calc(50% - 1rem); /* Una tarjeta por fila */
+
+    }
+    p {
+        font-size: 0.7rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+        color: white;
+        text-align: justify;
+    }
+}
+@media (max-width: 576px) {
+    .education-cards > *, .experience-cards > * {
         flex: 1 1 calc(100% - 1rem); /* Una tarjeta por fila */
     }
 }

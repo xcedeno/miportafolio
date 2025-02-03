@@ -1,7 +1,14 @@
 /* Estilos base de la tarjeta */
+.education-cards {
+    display: flex;
+    flex-wrap: wrap; /* Permite que las tarjetas se envuelvan a la siguiente línea */
+    gap: 1rem;
+    justify-content: center; /* Centra las tarjetas horizontalmente */
+    margin-top: 1rem;
+}
 .education-card {
 position: relative;
-width: 300px;
+width: 100px;
 height: 200px;
 margin: 1rem;
 border-radius: 8px;
@@ -15,6 +22,10 @@ flex: 0 1 300px;
 transform: translateY(-5px);
 box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
+.education-card.expanded {
+    height: auto; /* Permite que la tarjeta se expanda */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
 
 .education-card-background {
 position: absolute;
@@ -25,16 +36,41 @@ height: 100%;
 background-size: cover;
 background-position: center;
 opacity: 0.8;
+transition: opacity 0.3s ease, height 0.3s ease, width 0.3s ease;
+}
+
+.education-card.expanded .education-card-background {
+    width: 50px; /* Ajusta el tamaño de la imagen cuando está expandida */
+    height: 50px; /* Ajusta el tamaño de la imagen cuando está expandida */
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 1;
 }
 
 .education-card-content {
-position: absolute;
-bottom: 0;
-left: 0;
-width: 100%;
-padding: 1rem;
-background-color: rgba(0, 0, 0, 0.753);
-color: white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.753);
+    color: white;
+    transition: padding 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.education-card.expanded .education-card-content {
+    position: relative;
+    background-color: transparent;
+    padding: 1rem 0;
+    top: 60px;
+}
+.education-card.expanded .education-card-content h3 {
+    display: none;
 }
 
 .education-card-content h3 {
@@ -46,64 +82,33 @@ font-size: 1.2rem;
 margin: 0;
 font-size: 0.8rem;
 }
+.education-card-description {
 
-/* Estilos del modal */
-.education-modal-overlay {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background-color: rgba(0, 0, 0, 0.5);
-display: flex;
-justify-content: center;
-align-items: center;
-z-index: 1000;
-transition: opacity 0.3s ease, visibility 0.3s ease; /* Transición para el efecto de desvanecimiento */
+    margin-top: 0.7rem;
+    padding: 0 1rem;
+    height: 250px;
 }
 
-.education-modal {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 8px;
-    max-width: 500px;
-    width: 90%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transform: translateY(-20px); /* Posición inicial para el desplazamiento */
-    transition: transform 0.3s ease; /* Transición para el efecto de desplazamiento */
-}
-.education-modal-overlay.active {
-    opacity: 1; /* Mostrar el overlay */
-    visibility: visible; /* Mostrar el overlay */
-}
+@media (max-width: 768px) {
+    .education-card {
+        width: 100%;
+        
+        margin: 1rem 0; /* Ajusta el margen para centrar la tarjeta */
+    }
 
-.education-modal h2 {
-margin-top: 0;
-font-size: 2rem;
-color: #333;
-}
+    .education-card.expanded .education-card-background {
+        width: 40px; /* Ajusta el tamaño de la imagen cuando está expandida en pantallas pequeñas */
+        height: 40px; /* Ajusta el tamaño de la imagen cuando está expandida en pantallas pequeñas */
+    }
 
-.education-modal h3 {
-font-size: 1.5rem;
-color: #666;
-}
 
-.education-modal p {
-font-size: 1rem;
-color: #666;
-}
+    .education-card-content h3 {
+        font-size: 1rem;
+    }
 
-.education-modal button {
-margin-top: 1rem;
-padding: 0.5rem 1rem;
-background-color: #007bff;
-color: white;
-border: none;
-border-radius: 4px;
-cursor: pointer;
-transition: background-color 0.3s ease;
-}
+    .education-card-content p {
+        font-size: 0.8rem;
+    }
 
-.education-modal button:hover {
-background-color: #0056b3;
+    
 }

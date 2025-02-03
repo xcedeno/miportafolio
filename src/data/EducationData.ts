@@ -6,7 +6,7 @@ export const educationData = [
         degree: 'T.S.U en Tecnologia Naval Mencion Navegacion y Pesca',
         duration: '2025',
         description:
-        'Estudié una licenciatura en informática con enfoque en desarrollo de software y administración de redes.',
+        ' Esta carrera me brinda una sólida formación en técnicas de navegación y seguridad marítima, así como en la gestión de recursos pesqueros sostenibles. ',
     },
     {
         institution: 'Universidad Nacional Experimental de La Fuerza Armada',
@@ -14,7 +14,7 @@ export const educationData = [
         degree: 'Ingeniero En Sistemas',
         duration: '2025',
         description:
-        'Obtuve una certificación en redes y seguridad informática, especializándome en firewalls y VPNs.',
+        'habilidades en el diseño, implementación y gestión de soluciones tecnológicas. A través de una formación integral, aprendo sobre programación, bases de datos, redes y seguridad informática.',
     },
     {
         institution: 'Escuela Tecnica Industrial Alejandro Hernandez',
@@ -22,6 +22,6 @@ export const educationData = [
         degree: 'Tecnico Medio en Electricidad',
         duration: '2003',
         description:
-        'Obtuve una certificación en redes y seguridad informática, especializándome en firewalls y VPNs.',
+        'conocimientos fundamentales en el diseño, mantenimiento e instalación de sistemas eléctricos. A lo largo de la carrera, aprendo sobre circuitos, electricidad industrial y residencial, así como sobre normativas de seguridad.',
     },
     ];

@@ -16,39 +16,52 @@ export const experienceData = [
         image: '/assets/images/procesadora-karibe.jpg', // Ruta al logo de otra empresa
         position: 'Sub-Gerente de Produccion',
         duration: 'Marzo 2018 - Diciembre 2019',
-        description:
-        'Configuré y mantuve redes alámbricas e inalámbricas, asegurando la conectividad y seguridad de la red.',
-    },
+        description:[
+        'Supervisión y control de calidad de productos artesanales.',
+        'Diseño, etiquetado y publicidad de productos.',
+        'Coordinación de equipos de trabajo para cumplir con los objetivos de producción.',
+        ]    },
     {
         company: 'Pc Service Center',
         image: '/assets/images/pc-service-center.jpg', // Ruta al logo de otra empresa
         position: 'Analista de Soporte Técnico',
         duration: 'Marzo 2018 - Diciembre 2019',
-        description:
-        'Configuré y mantuve redes alámbricas e inalámbricas, asegurando la conectividad y seguridad de la red.',
+        description: [
+            'Atención y resolución de problemas de hardware y software para clientes.',
+            ' Implementación de proyectos de red y equipos tecnológicos.',
+            'Asesoría técnica personalizada para optimizar el rendimiento de los sistemas.',
+        ],
     },
     {
         company: 'Sigo S.A',
         image: '/assets/images/sigosa.jpg', // Ruta al logo de otra empresa
         position: 'Asistente de ventas y servicios',
         duration: 'Marzo 2018 - Diciembre 2019',
-        description:
-        'Configuré y mantuve redes alámbricas e inalámbricas, asegurando la conectividad y seguridad de la red.',
+        description: [
+            'Asesor de Ventas y Servicios.',
+            'Experiencias en  ventas en el departamento de electronica.',
+        ],
     },
     {
         company: 'Fimasis Soluciones Import',
         image: '/assets/images/fimasis.jpg', // Ruta al logo de otra empresa
         position: 'Analista de Soporte Técnico',
         duration: 'Marzo 2018 - Diciembre 2019',
-        description:
-        'Configuré y mantuve redes alámbricas e inalámbricas, asegurando la conectividad y seguridad de la red.',
+        description: [
+            'Atención y resolución de problemas de hardware y software para clientes.',
+            ' Implementación de proyectos de red y equipos tecnológicos.',
+            'Asesoría técnica personalizada para optimizar el rendimiento de los sistemas.',
+        ],
     },
     {
         company: 'A & R Technology, C.a',
         image: '/assets/images/ayr-technology.jpg', // Ruta al logo de otra empresa
         position: 'Analista de Soporte Técnico',
         duration: 'Marzo 2018 - Diciembre 2019',
-        description:
-        'Configuré y mantuve redes alámbricas e inalámbricas, asegurando la conectividad y seguridad de la red.',
+        description: [
+            'Atención y resolución de problemas de hardware y software para clientes.',
+            ' Implementación de proyectos de red y equipos tecnológicos.',
+            'Asesoría técnica personalizada para optimizar el rendimiento de los sistemas.',
+        ],
     },
     ];

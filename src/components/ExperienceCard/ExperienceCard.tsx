@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React  from 'react';
 import './ExperienceCard.css';
 
 interface ExperienceCardProps {
@@ -7,17 +7,15 @@ interface ExperienceCardProps {
     position: string;
     duration: string;
     description: string[];
+    isExpanded: boolean;
+    onClick: () => void;
 }
 
-const ExperienceCard: React.FC<ExperienceCardProps> = ({ company, image, position, duration, description }) => {
-    const [isExpanded, setIsExpanded] = useState(false);
+const ExperienceCard: React.FC<ExperienceCardProps> = ({ company, image, position, duration, description, isExpanded, onClick }) => {
 
-    const toggleExpanded = () => {
-        setIsExpanded(!isExpanded);
-    };
 
     return (
-        <div className={`experience-card ${isExpanded ? 'expanded' : ''}`} onClick={toggleExpanded}>
+        <div className={`experience-card ${isExpanded ? 'expanded' : ''}`} onClick={onClick}>
             <div
                 className="experience-card-background"
                 style={{ backgroundImage: `url(${image})` }}

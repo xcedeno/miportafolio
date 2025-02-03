@@ -133,6 +133,7 @@
     }
     .navbar-left p {
         font-size: 0.8rem;
+        text-align: left;
     }
     .navbar-left .profile-photo {
         
@@ -152,12 +153,12 @@
     }
     .navbar-center {
         display: none; /* Ocultar el menú en móviles por defecto */
-        flex-direction: column;
+        flex-direction: center;
         position: absolute;
-        top: 100%;
+        top: 50%;
         left: 0;
         width: 100%;
-        background-color: rgba(0, 0, 0, 0.95);
+        background-color: rgba(0, 0, 0, 0.90);
         padding: 1rem;
     }
 

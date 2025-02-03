@@ -9,7 +9,7 @@
 .experience-card {
     position: relative;
     width: 300px;
-    height: 200px;
+    
     margin: 1rem;
     border-radius: 8px;
     overflow: hidden;
@@ -43,6 +43,12 @@
     transform: translateX(-50%);
     opacity: 1;
 }
+.experience-card-description {
+    
+    margin-top: 0.7rem;
+    padding: 0 1rem;
+    height: 250px;
+}
 
 .experience-card-content {
     position: absolute;
@@ -74,7 +80,7 @@
 
 .experience-card-content p {
     margin: 0;
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 
 .experience-card-description {
@@ -96,9 +102,10 @@
     }
     .experience-card-content h3 {
         font-size: 1rem;
+
     }
 
     .experience-card-content p {
-        font-size: 0.6rem;
+        font-size: 0.8rem;
     }
 }

@@ -4,8 +4,12 @@ import { educationData } from '../../data/EducationData';
 import ExperienceCard from '../ExperienceCard/ExperienceCard';
 import EducationCard from '../EducationCard/EducationCard';
 import './About.css';
+interface AboutProps {
+    className?: string;
+}
 
-const About: React.FC = () => {
+
+const About: React.FC<AboutProps> = ({ className }) => {
     const [expandedCardIndex, setExpandedCardIndex] = useState<number | null>(null);
     const [expandedEducationIndex, setExpandedEducationIndex] = useState<number | null>(null);
 
@@ -18,7 +22,7 @@ const About: React.FC = () => {
     };
 
     return (
-        <section id="about">
+        <section id="about" className={className}>
             <h2>Acerca de Mí</h2>
             <p>
                 Analista de sistemas con más de 10 años de experiencia en soporte técnico, 

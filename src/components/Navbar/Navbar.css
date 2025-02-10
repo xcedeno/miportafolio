@@ -156,6 +156,9 @@ opacity: 1;
     .navbar-left p {
         font-size: 0.8rem;
         text-align: left;
+        white-space: normal; /* Permitir que el texto se divida en varias líneas */
+        word-wrap: nowrap; /* Ajustar el texto para que no se desborde */
+        overflow: visible; /* Permitir que el texto se muestre completamente */
     }
     .navbar-left .profile-photo {
         

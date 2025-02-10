@@ -18,15 +18,37 @@
     color: rgb(72, 228, 25);
     font-size: 2.2rem;
     margin-bottom: 0.1rem;
+    opacity: 0;
+    white-space: nowrap;
+    animation: typing 2s steps(20) 1s forwards, blink-caret 0.75s step-end infinite;
     
 }
 .navbar-left p {
     color: rgb(255, 255, 255);
     font-size: 1rem;
-    opacity: 0; /* Inicialmente oculto */
-    transform: translateY(20px); /* Posición inicial para el desplazamiento */
-    animation: slideIn 1s forwards; /* Aplicar animación */
-    animation-delay: 0.3s;
+white-space: nowrap;
+overflow: hidden;
+opacity: 0;
+animation: typing 2s steps(20) 1s forwards, blink-caret 0.75s step-end infinite;
+
+}
+@keyframes typing {
+from {
+width: 0;
+opacity: 0;
+}
+to {
+width: 100%;
+opacity: 1;
+}
+}
+@keyframes blink-caret {
+    from, to {
+        border-right-color: transparent;
+    }
+    50% {
+        border-right-color: white;
+    }
 }
 @keyframes slideIn {
     from {

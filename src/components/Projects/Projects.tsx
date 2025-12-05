@@ -113,7 +113,11 @@ const CardLink = styled.span`
   }
 `;
 
-const Projects: React.FC = () => {
+interface ProjectsProps {
+  className?: string;
+}
+
+const Projects: React.FC<ProjectsProps> = ({ className }) => {
   const navigate = useNavigate();
   const { t, language } = useLanguage();
 
@@ -137,7 +141,7 @@ const Projects: React.FC = () => {
   ];
 
   return (
-    <Section>
+    <Section className={className}>
       <Title>{t('projects.title') || (language === 'es' ? 'Proyectos' : 'Projects')}</Title>
       <Grid>
         {categories.map((category, index) => (

@@ -1,29 +1,26 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar/Navbar';
-import MainScreen from './screens/MainScreen';
-import ProgrammingScreen from './screens/ProgrammingScreen';
-import NetworkingScreen from './screens/NetworkingScreen';
+import Layout from './components/Layout/Layout';
+import Hero from './components/Hero/Hero';
 import About from './components/About/About';
 import Projects from './components/Projects/Projects';
-import Footer from './components/footer/Footer';
 import Skills from './components/Skills/Skills';
+import ProgrammingScreen from './screens/ProgrammingScreen';
+import NetworkingScreen from './screens/NetworkingScreen';
 
 const App: React.FC = () => {
   return (
     <Router>
-      <div className="app-container">
-        <Navbar /> {/* Navbar común para todas las pantallas */}
+      <Layout>
         <Routes>
-          <Route path="/" element={<MainScreen />} /> {/* Ruta principal */}
-          <Route path="/about" element={<About />} /> {/* Nueva pantalla */}
-          <Route path="/projects" element={<Projects />} /> {/* Nueva pantalla */}
-          <Route path="/skills" element={<Skills />} /> {/* Nueva pantalla */}
-          <Route path="/programming" element={<ProgrammingScreen />} /> {/* Nueva pantalla */}
-          <Route path="/networking" element={<NetworkingScreen />} /> {/* Nueva pantalla */}
+          <Route path="/" element={<Hero />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/skills" element={<Skills />} />
+          <Route path="/programming" element={<ProgrammingScreen />} />
+          <Route path="/networking" element={<NetworkingScreen />} />
         </Routes>
-        <Footer /> {/* Footer común para todas las pantallas */}
-      </div>
+      </Layout>
     </Router>
   );
 };

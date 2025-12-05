@@ -1,0 +1,41 @@
+:root {
+    /* Dark/Neon Theme Colors */
+    --bg-primary: #0f0f16;
+    --bg-secondary: #1e1e2f;
+    --bg-card: #252538;
+
+    --primary-color: #6c63ff;
+    /* Neon Purple */
+    --secondary-color: #3f3d56;
+    --accent-color: #00d4ff;
+    /* Neon Blue */
+
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0b0;
+    --text-muted: #6c6c7d;
+
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --spacing-xl: 8rem;
+
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease-in-out;
+
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+}
+
+/* Light Mode (Optional Future Proofing - currently mapped to dark for consistency or can be inverted later) */
+[data-theme='light'] {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f4f6f8;
+    --bg-card: #ffffff;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+}

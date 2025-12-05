@@ -8,20 +8,24 @@ import Skills from './components/Skills/Skills';
 import ProgrammingScreen from './screens/ProgrammingScreen';
 import NetworkingScreen from './screens/NetworkingScreen';
 
+import { LanguageProvider } from './context/LanguageContext';
+
 const App: React.FC = () => {
   return (
-    <Router>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Hero />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/skills" element={<Skills />} />
-          <Route path="/programming" element={<ProgrammingScreen />} />
-          <Route path="/networking" element={<NetworkingScreen />} />
-        </Routes>
-      </Layout>
-    </Router>
+    <LanguageProvider>
+      <Router>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Hero />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/skills" element={<Skills />} />
+            <Route path="/programming" element={<ProgrammingScreen />} />
+            <Route path="/networking" element={<NetworkingScreen />} />
+          </Routes>
+        </Layout>
+      </Router>
+    </LanguageProvider>
   );
 };
 

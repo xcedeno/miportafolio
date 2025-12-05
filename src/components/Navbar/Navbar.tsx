@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars, FaTimes, FaGlobe } from 'react-icons/fa';
+import { useLanguage } from '../../context/LanguageContext';
 
 const NavContainer = styled.nav<{ $scrolled: boolean }>`
   position: fixed;
@@ -10,9 +11,9 @@ const NavContainer = styled.nav<{ $scrolled: boolean }>`
   width: 100%;
   height: 80px;
   background: ${({ $scrolled }) =>
-        $scrolled ? 'rgba(15, 15, 22, 0.95)' : 'transparent'};
+    $scrolled ? 'rgba(15, 15, 22, 0.95)' : 'transparent'};
   backdrop-filter: ${({ $scrolled }) =>
-        $scrolled ? 'blur(10px)' : 'none'};
+    $scrolled ? 'blur(10px)' : 'none'};
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -20,7 +21,7 @@ const NavContainer = styled.nav<{ $scrolled: boolean }>`
   z-index: 1000;
   transition: all 0.3s ease-in-out;
   border-bottom: 1px solid ${({ $scrolled }) =>
-        $scrolled ? 'rgba(255, 255, 255, 0.05)' : 'transparent'};
+    $scrolled ? 'rgba(255, 255, 255, 0.05)' : 'transparent'};
 `;
 
 const Logo = styled.div`
@@ -110,6 +111,24 @@ const CTAButton = styled.button`
   }
 `;
 
+const LangButton = styled.button`
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: var(--primary-color);
+    transform: scale(1.05);
+  }
+`;
+
 const MobileIcon = styled.div`
   display: none;
   font-size: 1.8rem;
@@ -122,51 +141,60 @@ const MobileIcon = styled.div`
 `;
 
 const Navbar: React.FC = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
-    const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const { toggleLanguage, language } = useLanguage();
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-    const toggleMenu = () => setIsOpen(!isOpen);
+  const toggleMenu = () => setIsOpen(!isOpen);
 
-    return (
-        <NavContainer $scrolled={scrolled}>
-            <Logo onClick={() => navigate('/')}>
-                Xavier<span>Cedeño</span>
-            </Logo>
+  return (
+    <NavContainer $scrolled={scrolled}>
+      <Logo onClick={() => navigate('/')}>
+        Xavier<span>Cedeño</span>
+      </Logo>
 
-            <MobileIcon onClick={toggleMenu}>
-                {isOpen ? <FaTimes /> : <FaBars />}
-            </MobileIcon>
+      <MobileIcon onClick={toggleMenu}>
+        {isOpen ? <FaTimes /> : <FaBars />}
+      </MobileIcon>
 
-            <NavMenu $isOpen={isOpen}>
-                <NavItem>
-                    <StyledNavLink to="/" onClick={() => setIsOpen(false)}>Home</StyledNavLink>
-                </NavItem>
-                <NavItem>
-                    <StyledNavLink to="/about" onClick={() => setIsOpen(false)}>About</StyledNavLink>
-                </NavItem>
-                <NavItem>
-                    <StyledNavLink to="/projects" onClick={() => setIsOpen(false)}>Portfolio</StyledNavLink>
-                </NavItem>
-                <NavItem>
-                    <StyledNavLink to="/skills" onClick={() => setIsOpen(false)}>Skills</StyledNavLink>
-                </NavItem>
-                <NavItem>
-                    <CTAButton onClick={() => window.open('/assets/cv.pdf', '_blank')}>
-                        Download CV
-                    </CTAButton>
-                </NavItem>
-            </NavMenu>
-        </NavContainer>
-    );
+      <NavMenu $isOpen={isOpen}>
+        <NavItem>
+          <StyledNavLink to="/" onClick={() => setIsOpen(false)}>Home</StyledNavLink>
+        </NavItem>
+        <NavItem>
+          <StyledNavLink to="/about" onClick={() => setIsOpen(false)}>About</StyledNavLink>
+        </NavItem>
+        <NavItem>
+          <StyledNavLink to="/projects" onClick={() => setIsOpen(false)}>Portfolio</StyledNavLink>
+        </NavItem>
+        <NavItem>
+          <StyledNavLink to="/skills" onClick={() => setIsOpen(false)}>Skills</StyledNavLink>
+        </NavItem>
+        <NavItem>
+          <CTAButton onClick={() => window.open('/assets/cv.pdf', '_blank')}>
+            Download CV
+          </CTAButton>
+        </NavItem>
+        <NavItem>
+          <LangButton onClick={toggleLanguage} aria-label="Toggle Language">
+            <FaGlobe />
+            <span style={{ fontSize: '0.9rem', fontWeight: 600 }}>
+              {language === 'es' ? 'EN' : 'ES'}
+            </span>
+          </LangButton>
+        </NavItem>
+      </NavMenu>
+    </NavContainer>
+  );
 };
 
 export default Navbar;

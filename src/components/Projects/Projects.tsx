@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { useLanguage } from '../../context/LanguageContext';
 
 const Section = styled.section`
   padding: 4rem 2rem;
@@ -112,43 +113,32 @@ const CardLink = styled.span`
   }
 `;
 
-interface ProjectsProps {
-  className?: string; // Kept for compatibility if passed
-}
-
-const Projects: React.FC<ProjectsProps> = () => {
+const Projects: React.FC = () => {
   const navigate = useNavigate();
+  const { t, language } = useLanguage();
 
   const categories = [
     {
-      title: 'Programación',
-      description: 'Explora proyectos y guías relacionados con desarrollo de software.',
-      link: '/programming',
-      image: 'https://cdn-icons-png.flaticon.com/512/1005/1005141.png'
+      title: language === 'es' ? 'Programación' : 'Programming',
+      description: language === 'es'
+        ? 'Proyectos de desarrollo web, aplicaciones móviles y scripts de automatización.'
+        : 'Web development projects, mobile apps, and automation scripts.',
+      image: "/assets/images/react.png",
+      link: "/programming"
     },
     {
-      title: 'Redes',
-      description: 'Aprende sobre configuraciones de redes y seguridad informática.',
-      link: '/networking',
-      image: 'https://cdn-icons-png.flaticon.com/128/2177/2177461.png',
-    },
-    {
-      title: 'Diseño Gráfico',
-      description: 'Descubre recursos y proyectos de diseño gráfico y UX/UI.',
-      link: '/graphic-design',
-      image: 'https://cdn-icons-png.flaticon.com/128/2779/2779775.png',
-    },
-    {
-      title: 'Base de Datos',
-      description: 'Guías y proyectos sobre administración y diseño de bases de datos.',
-      link: '/databases',
-      image: 'https://cdn-icons-png.flaticon.com/128/18771/18771123.png',
-    },
+      title: language === 'es' ? 'Redes y Telecomunicaciones' : 'Networking & Telecommunications',
+      description: language === 'es'
+        ? 'Diseño de redes, seguridad informática y configuración de servidores.'
+        : 'Network design, cybersecurity, and server configuration.',
+      image: "/assets/images/mikrotik.png",
+      link: "/networking"
+    }
   ];
 
   return (
     <Section>
-      <Title>My Portfolio</Title>
+      <Title>{t('projects.title') || (language === 'es' ? 'Proyectos' : 'Projects')}</Title>
       <Grid>
         {categories.map((category, index) => (
           <Card key={index} onClick={() => navigate(category.link)}>
@@ -158,7 +148,7 @@ const Projects: React.FC<ProjectsProps> = () => {
             <CardContent>
               <CardTitle>{category.title}</CardTitle>
               <CardDescription>{category.description}</CardDescription>
-              <CardLink>View Projects</CardLink>
+              <CardLink>{language === 'es' ? 'Ver Proyectos' : 'View Projects'}</CardLink>
             </CardContent>
           </Card>
         ))}

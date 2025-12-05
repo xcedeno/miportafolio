@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { experienceData } from '../../data/ExperienceData';
 import { educationData } from '../../data/EducationData';
+import { useLanguage } from '../../context/LanguageContext';
 
 const Section = styled.section`
   padding: 4rem 2rem;
@@ -64,7 +65,7 @@ const Timeline = styled.div`
 const Item = styled.div`
   position: relative;
   margin-bottom: 3rem;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -124,65 +125,238 @@ const ItemContent = styled.div`
   }
 `;
 
+const ItemHeaderRow = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+`;
+
+// --- Modal Styled Components ---
+const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+`;
+
+const ModalContent = styled.div`
+  background-color: var(--bg-primary);
+  border: 1px solid var(--primary-color);
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 600px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.3s ease;
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+`;
+
+const CloseButton = styled.button`
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  line-height: 1;
+
+  &:hover {
+    color: var(--primary-color);
+  }
+`;
+
+const ModalTitle = styled.h3`
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  text-align: center;
+`;
+
+const ModalSubtitle = styled.h4`
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: normal;
+  text-align: center;
+`;
+
+const ModalDuration = styled.div`
+  color: var(--accent-color);
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  text-align: center;
+`;
+
+const ModalDescription = styled.div`
+  color: #ffffff; /* Forced white for visibility */
+  line-height: 1.6;
+  font-size: 1rem;
+
+  ul {
+    list-style: disc;
+    margin-left: 2rem; 
+  }
+  
+  li {
+    margin-bottom: 0.8rem;
+  }
+`;
+
+const InteractiveLogo = styled.img`
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 1rem;
+  border: 2px solid var(--primary-color);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 12px var(--primary-color);
+  }
+`;
+
+const ModalLogo = styled.img`
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--primary-color);
+  display: block;
+  margin: 0 auto 1rem;
+`;
+
 interface AboutProps {
-    className?: string;
+  className?: string;
 }
 
 const About: React.FC<AboutProps> = () => {
-    // We can render items directly. No need for complex expand/collapse if the list is reasonable.
-    // But if the user wants expand, we can add it. For a "Striking" portfolio, seeing the timeline is usually better.
+  const { t, language } = useLanguage();
+  const [selectedExperience, setSelectedExperience] = useState<typeof experienceData[0] | null>(null);
 
-    return (
-        <Section id="about">
-            <Title>About Me</Title>
-            <Description>
-                Systems Analyst with over 10 years of experience in technical support, network configuration,
-                and infrastructure maintenance. Specialized in hardware/software troubleshooting, wired/wireless
-                network implementation, and server management. Passionate about technological innovation and
-                continuous learning.
-            </Description>
+  const openModal = (exp: typeof experienceData[0]) => {
+    setSelectedExperience(exp);
+  };
 
-            <Subtitle>Experience</Subtitle>
-            <Timeline>
-                {experienceData.map((exp, index) => (
-                    <Item key={index}>
-                        <ItemHeader>
-                            <ItemTitle>{exp.position}</ItemTitle>
-                            <ItemSubtitle>{exp.company}</ItemSubtitle>
-                        </ItemHeader>
-                        <Duration>{exp.duration}</Duration>
-                        <ItemContent>
-                            {Array.isArray(exp.description) ? (
-                                <ul>
-                                    {exp.description.map((desc, i) => (
-                                        <li key={i}>{desc.replace(/^\s*\*/, '')}</li>
-                                    ))}
-                                </ul>
-                            ) : (
-                                <p>{exp.description}</p>
-                            )}
-                        </ItemContent>
-                    </Item>
-                ))}
-            </Timeline>
+  const closeModal = () => {
+    setSelectedExperience(null);
+  };
 
-            <Subtitle>Education</Subtitle>
-            <Timeline>
-                {educationData.map((edu, index) => (
-                    <Item key={index}>
-                        <ItemHeader>
-                            <ItemTitle>{edu.degree}</ItemTitle>
-                            <ItemSubtitle>{edu.institution}</ItemSubtitle>
-                        </ItemHeader>
-                        <Duration>{edu.duration}</Duration>
-                        <ItemContent>
-                            <p>{edu.description}</p>
-                        </ItemContent>
-                    </Item>
-                ))}
-            </Timeline>
-        </Section>
-    );
+  return (
+    <Section id="about">
+      <Title>{t('about.title')}</Title>
+      <Description>
+        {t('about.description')}
+      </Description>
+
+      <Subtitle>{t('about.exp')}</Subtitle>
+      <Timeline>
+        {experienceData.map((exp, index) => (
+          <Item key={index}>
+            <ItemHeaderRow>
+              {exp.image && (
+                <InteractiveLogo
+                  src={exp.image}
+                  alt={exp.company}
+                  onClick={() => openModal(exp)}
+                  title="Click for details"
+                />
+              )}
+              <ItemHeader>
+                <ItemTitle>{exp.position[language]}</ItemTitle>
+                <ItemSubtitle>{exp.company}</ItemSubtitle>
+              </ItemHeader>
+            </ItemHeaderRow>
+          </Item>
+        ))}
+      </Timeline>
+
+      {selectedExperience && (
+        <ModalOverlay onClick={closeModal}>
+          <ModalContent onClick={(e) => e.stopPropagation()}>
+            <CloseButton onClick={closeModal}>&times;</CloseButton>
+
+            {selectedExperience.image && (
+              <ModalLogo
+                src={selectedExperience.image}
+                alt={selectedExperience.company}
+              />
+            )}
+
+            <ModalTitle>{selectedExperience.position[language]}</ModalTitle>
+            <ModalSubtitle>{selectedExperience.company}</ModalSubtitle>
+            <ModalDuration>
+              {selectedExperience.duration[language]}
+            </ModalDuration>
+
+            <ModalDescription>
+              {(() => {
+                if (!selectedExperience || !selectedExperience.description) {
+                  return <p style={{ color: 'red' }}>Error: No description object found.</p>;
+                }
+                const descData = selectedExperience.description[language];
+                if (!descData) {
+                  return (
+                    <div style={{ color: 'orange' }}>
+                      <p>No description for language: {language}</p>
+                      <p>Available keys: {Object.keys(selectedExperience.description).join(', ')}</p>
+                    </div>
+                  );
+                }
+                const descArray = Array.isArray(descData) ? descData : [descData];
+
+                if (descArray.length === 0) {
+                  return <p>Description is empty.</p>;
+                }
+
+                return (
+                  <ul>
+                    {descArray.map((desc, i) => (
+                      <li key={i}>{desc}</li>
+                    ))}
+                  </ul>
+                );
+              })()}
+            </ModalDescription>
+          </ModalContent>
+        </ModalOverlay>
+      )}
+
+      <Subtitle>{t('about.edu')}</Subtitle>
+      <Timeline>
+        {educationData.map((edu, index) => (
+          <Item key={index}>
+            <ItemHeader>
+              <ItemTitle>{edu.degree[language]}</ItemTitle>
+              <ItemSubtitle>{edu.institution}</ItemSubtitle>
+            </ItemHeader>
+            <Duration>{edu.duration}</Duration>
+            <ItemContent>
+              <p>{edu.description[language]}</p>
+            </ItemContent>
+          </Item>
+        ))}
+      </Timeline>
+    </Section>
+  );
 };
 
 export default About;

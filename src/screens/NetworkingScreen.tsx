@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import NetworkingGuideCard from '../components/GuideCard/NetworkingGuideCard';
+import { useLanguage } from '../context/LanguageContext';
 
 const ScreenContainer = styled.div`
   padding: 4rem 2rem;
@@ -45,65 +46,60 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
-  
+
   @media (max-width: 480px) {
     grid-template-columns: 1fr;
   }
 `;
 
 const NetworkingScreen: React.FC = () => {
-    const networkingProjects = [
-        {
-            title: 'Configuración de una Red LAN',
-            description: 'Guía detallada para diseñar y configurar una red LAN eficiente en un entorno empresarial.',
-            technologies: ['mikrotik', 'tplink'], // Adjusted for probable generic filenames
-            githubLink: 'https://github.com/tu-usuario/configuracion-lan',
-        },
-        {
-            title: 'Seguridad en Redes: Firewalls y VPNs',
-            description: 'Implementación de reglas de firewall avanzadas y túneles VPN para asegurar comunicaciones.',
-            technologies: ['mikrotik', 'service'],
-            githubLink: 'https://github.com/tu-usuario/seguridad-redes',
-        },
-        {
-            title: 'Configuración de un Servidor DHCP',
-            description: 'Tutorial paso a paso para desplegar un servidor DHCP robusto y administración de leases.',
-            technologies: ['linux', 'service'],
-            githubLink: 'https://github.com/tu-usuario/servidor-dhcp',
-        },
-        {
-            title: 'Monitoreo de Red con Nagios',
-            description: 'Configuración de Nagios para el monitoreo proactivo de dispositivos y servicios de red.',
-            technologies: ['service', 'linux'], // Using 'service' as generic icon placeholders if exact ones missing
-            githubLink: 'https://github.com/tu-usuario/monitoreo-nagios',
-        },
-    ];
+  const { language } = useLanguage();
 
-    return (
-        <ScreenContainer>
-            <Header>
-                <MainTitle>Redes y Configuración</MainTitle>
-                <Description>
-                    Bienvenido a la sección de redes. Aquí encontrarás guías, tutoriales y proyectos
-                    relacionados con la configuración y administración de redes.
-                </Description>
-            </Header>
+  const networkingProjects = [
+    {
+      title: language === 'es' ? 'Configuración de una Red LAN' : 'LAN Network Configuration',
+      description: language === 'es'
+        ? 'Guía COMPLETA para configurar una red LAN en un entorno empresarial, incluyendo VLANs y enrutamiento.'
+        : 'COMPLETE guide to configuring a LAN network in a business environment, including VLANs and routing.',
+      technologies: ['cisco', 'networking'],
+      githubLink: 'https://github.com/tu-usuario/configuracion-lan',
+    },
+    {
+      title: language === 'es' ? 'Seguridad en Redes con Firewalls' : 'Network Security with Firewalls',
+      description: language === 'es'
+        ? 'Implementación de políticas de seguridad utilizando firewalls y VPNs para proteger la infraestructura.'
+        : 'Implementation of security policies using firewalls and VPNs to protect infrastructure.',
+      technologies: ['lock', 'security'],
+      githubLink: 'https://github.com/tu-usuario/seguridad-redes',
+    },
+  ];
 
-            <SectionTitle>Proyectos Destacados</SectionTitle>
+  return (
+    <ScreenContainer>
+      <Header>
+        <MainTitle>{language === 'es' ? 'Redes y Telecomunicaciones' : 'Networking & Telecommunications'}</MainTitle>
+        <Description>
+          {language === 'es'
+            ? 'Explora mis proyectos y laboratorios en el área de redes. Desde configuraciones básicas hasta arquitecturas complejas y seguridad.'
+            : 'Explore my projects and labs in the networking area. From basic configurations to complex architectures and security.'}
+        </Description>
+      </Header>
 
-            <Grid>
-                {networkingProjects.map((project, index) => (
-                    <NetworkingGuideCard
-                        key={index}
-                        title={project.title}
-                        description={project.description}
-                        technologies={project.technologies}
-                        githubLink={project.githubLink}
-                    />
-                ))}
-            </Grid>
-        </ScreenContainer>
-    );
+      <SectionTitle>{language === 'es' ? 'Proyectos y Laboratorios' : 'Projects and Labs'}</SectionTitle>
+
+      <Grid>
+        {networkingProjects.map((project, index) => (
+          <NetworkingGuideCard
+            key={index}
+            title={project.title}
+            description={project.description}
+            technologies={project.technologies}
+            githubLink={project.githubLink}
+          />
+        ))}
+      </Grid>
+    </ScreenContainer>
+  );
 };
 
 export default NetworkingScreen;

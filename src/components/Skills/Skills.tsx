@@ -133,8 +133,11 @@ interface SkillsProps {
   className?: string;
 }
 
+import { useLanguage } from '../../context/LanguageContext';
+
 const Skills: React.FC<SkillsProps> = () => {
   const [activeSkill, setActiveSkill] = useState<number | null>(null);
+  const { t, language } = useLanguage();
 
   const toggleSkill = (index: number) => {
     setActiveSkill(activeSkill === index ? null : index);
@@ -150,10 +153,13 @@ const Skills: React.FC<SkillsProps> = () => {
 
   return (
     <Section id="skills">
-      <Title>My Skills</Title>
+      <Title>{t('skills.title')}</Title>
       <Grid>
         {skillsData.map((skill, index) => {
-          const percent = getPercentage(skill.skillsList.length, index);
+          // Determine the correct list based on language
+          const list = skill.skillsList[language];
+          const percent = getPercentage(list.length, index);
+
           return (
             <SkillCard
               key={index}
@@ -171,7 +177,7 @@ const Skills: React.FC<SkillsProps> = () => {
 
               <Details $isOpen={activeSkill === index}>
                 <List>
-                  {skill.skillsList.map((item, i) => (
+                  {list.map((item, i) => (
                     <ListItem key={i}>{item}</ListItem>
                   ))}
                 </List>

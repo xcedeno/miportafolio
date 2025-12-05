@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ProgrammingGuideCard from '../components/GuideCard/ProgrammingGuideCard';
+import { useLanguage } from '../context/LanguageContext';
 
 const ScreenContainer = styled.div`
   padding: 2rem;
@@ -51,54 +52,62 @@ const Grid = styled.div`
   }
 `;
 
-
 const ProgrammingScreen: React.FC = () => {
-    const projects = [
-        {
-            title: 'Aplicación Web con React y TypeScript',
-            description: 'Desarrollo de una aplicación web moderna con React y TypeScript, enfocada en la escalabilidad y mantenibilidad.',
-            technologies: ['react', 'typescript'], // Ensure these match filenames in /assets/skill/ default was /assets/images/
-            githubLink: 'https://github.com/tu-usuario/react-typescript-app',
-        },
-        {
-            title: 'API REST con Node.js y Express',
-            description: 'Creación de una API RESTful robusta utilizando Node.js y Express para manejar peticiones de alto tráfico.',
-            technologies: ['js', 'nodejs'], // Updated to probable file names key
-            githubLink: 'https://github.com/tu-usuario/node-express-api',
-        },
-        {
-            title: 'Introducción a Python para Ciencia de Datos',
-            description: 'Colección de scripts y notebooks para el análisis de datos y modelado predictivo básico.',
-            technologies: ['python'],
-            githubLink: 'https://github.com/tu-usuario/python-data-science',
-        },
-    ];
+  const { language } = useLanguage();
 
-    return (
-        <ScreenContainer>
-            <Header>
-                <MainTitle>Programación</MainTitle>
-                <Description>
-                    Bienvenido a la sección de programación. Aquí encontrarás guías, tutoriales y proyectos
-                    relacionados con el desarrollo de software.
-                </Description>
-            </Header>
+  const projects = [
+    {
+      title: language === 'es' ? 'Aplicación Web con React y TypeScript' : 'Web App with React and TypeScript',
+      description: language === 'es'
+        ? 'Desarrollo de una aplicación web moderna con React y TypeScript, enfocada en la escalabilidad y mantenibilidad.'
+        : 'Development of a modern web application with React and TypeScript, focused on scalability and maintainability.',
+      technologies: ['react', 'typescript'],
+      githubLink: 'https://github.com/tu-usuario/react-typescript-app',
+    },
+    {
+      title: language === 'es' ? 'API REST con Node.js y Express' : 'REST API with Node.js and Express',
+      description: language === 'es'
+        ? 'Creación de una API RESTful robusta utilizando Node.js y Express para manejar peticiones de alto tráfico.'
+        : 'Creation of a robust RESTful API using Node.js and Express to handle high-traffic requests.',
+      technologies: ['js', 'nodejs'],
+      githubLink: 'https://github.com/tu-usuario/node-express-api',
+    },
+    {
+      title: language === 'es' ? 'Introducción a Python para Ciencia de Datos' : 'Intro to Python for Data Science',
+      description: language === 'es'
+        ? 'Colección de scripts y notebooks para el análisis de datos y modelado predictivo básico.'
+        : 'Collection of scripts and notebooks for data analysis and basic predictive modeling.',
+      technologies: ['python'],
+      githubLink: 'https://github.com/tu-usuario/python-data-science',
+    },
+  ];
 
-            <SectionTitle>Proyectos Destacados</SectionTitle>
+  return (
+    <ScreenContainer>
+      <Header>
+        <MainTitle>{language === 'es' ? 'Programación' : 'Programming'}</MainTitle>
+        <Description>
+          {language === 'es'
+            ? 'Bienvenido a la sección de programación. Aquí encontrarás guías, tutoriales y proyectos relacionados con el desarrollo de software.'
+            : 'Welcome to the programming section. Here you will find guides, tutorials, and projects related to software development.'}
+        </Description>
+      </Header>
 
-            <Grid>
-                {projects.map((project, index) => (
-                    <ProgrammingGuideCard
-                        key={index}
-                        title={project.title}
-                        description={project.description}
-                        technologies={project.technologies}
-                        githubLink={project.githubLink}
-                    />
-                ))}
-            </Grid>
-        </ScreenContainer>
-    );
+      <SectionTitle>{language === 'es' ? 'Proyectos Destacados' : 'Featured Projects'}</SectionTitle>
+
+      <Grid>
+        {projects.map((project, index) => (
+          <ProgrammingGuideCard
+            key={index}
+            title={project.title}
+            description={project.description}
+            technologies={project.technologies}
+            githubLink={project.githubLink}
+          />
+        ))}
+      </Grid>
+    </ScreenContainer>
+  );
 };
 
 export default ProgrammingScreen;

@@ -135,7 +135,7 @@ interface SkillsProps {
 
 import { useLanguage } from '../../context/LanguageContext';
 
-const Skills: React.FC<SkillsProps> = () => {
+const Skills: React.FC<SkillsProps> = ({ className }) => {
   const [activeSkill, setActiveSkill] = useState<number | null>(null);
   const { t, language } = useLanguage();
 
@@ -152,7 +152,7 @@ const Skills: React.FC<SkillsProps> = () => {
   };
 
   return (
-    <Section id="skills">
+    <Section id="skills" className={className}>
       <Title>{t('skills.title')}</Title>
       <Grid>
         {skillsData.map((skill, index) => {

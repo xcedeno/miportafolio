@@ -143,7 +143,7 @@ const MobileIcon = styled.div`
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { toggleLanguage, language } = useLanguage();
+  const { toggleLanguage, language, t } = useLanguage();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -168,20 +168,20 @@ const Navbar: React.FC = () => {
 
       <NavMenu $isOpen={isOpen}>
         <NavItem>
-          <StyledNavLink to="/" onClick={() => setIsOpen(false)}>Home</StyledNavLink>
+          <StyledNavLink to="/" onClick={() => setIsOpen(false)}>{t('nav.home')}</StyledNavLink>
         </NavItem>
         <NavItem>
-          <StyledNavLink to="/about" onClick={() => setIsOpen(false)}>About</StyledNavLink>
+          <StyledNavLink to="/about" onClick={() => setIsOpen(false)}>{t('nav.about')}</StyledNavLink>
         </NavItem>
         <NavItem>
-          <StyledNavLink to="/projects" onClick={() => setIsOpen(false)}>Portfolio</StyledNavLink>
+          <StyledNavLink to="/projects" onClick={() => setIsOpen(false)}>{t('nav.portfolio')}</StyledNavLink>
         </NavItem>
         <NavItem>
-          <StyledNavLink to="/skills" onClick={() => setIsOpen(false)}>Skills</StyledNavLink>
+          <StyledNavLink to="/skills" onClick={() => setIsOpen(false)}>{t('nav.skills')}</StyledNavLink>
         </NavItem>
         <NavItem>
           <CTAButton onClick={() => window.open('/assets/cv.pdf', '_blank')}>
-            Download CV
+            {t('nav.download_cv')}
           </CTAButton>
         </NavItem>
         <NavItem>

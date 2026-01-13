@@ -38,24 +38,24 @@ const IconLink = styled.a`
 `;
 
 const Footer: React.FC = () => {
-    return (
-        <FooterContainer>
-            <FooterContent>
-                <SocialIcons>
-                    <IconLink href="https://www.linkedin.com/in/xavier-cedeno" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                        <FaLinkedin />
-                    </IconLink>
-                    <IconLink href="https://github.com/xcedeno" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                        <FaGithub />
-                    </IconLink>
-                    <IconLink href="https://twitter.com/xavier-cedeno" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                        <FaTwitter />
-                    </IconLink>
-                </SocialIcons>
-                <Copyright>&copy; {new Date().getFullYear()} Xavier Cedeño. All rights reserved.</Copyright>
-            </FooterContent>
-        </FooterContainer>
-    );
+  return (
+    <FooterContainer>
+      <FooterContent>
+        <SocialIcons>
+          <IconLink href="https://www.linkedin.com/in/xavier-cede%C3%B1o-02a750243/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <FaLinkedin />
+          </IconLink>
+          <IconLink href="https://github.com/xcedeno" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <FaGithub />
+          </IconLink>
+          <IconLink href="https://twitter.com/xavier-cedeno" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+            <FaTwitter />
+          </IconLink>
+        </SocialIcons>
+        <Copyright>&copy; {new Date().getFullYear()} Xavier Cedeño. All rights reserved.</Copyright>
+      </FooterContent>
+    </FooterContainer>
+  );
 };
 
 export default Footer;

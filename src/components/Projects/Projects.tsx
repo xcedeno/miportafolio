@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../../context/LanguageContext';
+import ParallaxImage from '../ParallaxImage/ParallaxImage';
 
 const Section = styled.section`
   padding: 4rem 2rem;
@@ -59,18 +60,18 @@ const IconWrapper = styled.div`
   justify-content: center;
   background: rgba(255, 255, 255, 0.03);
   padding: 1.5rem;
-`;
-
-const Icon = styled.img`
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  filter: drop-shadow(0 0 10px rgba(108, 99, 255, 0.5));
   transition: transform 0.3s ease;
 
   ${Card}:hover & {
     transform: scale(1.1);
   }
+`;
+
+const Icon = styled(ParallaxImage)`
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(108, 99, 255, 0.5));
 `;
 
 const CardContent = styled.div`

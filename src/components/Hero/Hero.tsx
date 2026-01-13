@@ -1,6 +1,8 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { FaFacebookF, FaTwitter, FaLinkedinIn } from 'react-icons/fa';
+import { FaFacebookF, FaTwitter, FaLinkedinIn, FaXTwitter } from 'react-icons/fa6';
+import ParallaxImage from '../ParallaxImage/ParallaxImage';
+import { useLanguage } from '../../context/LanguageContext';
 
 const float = keyframes`
   0% { transform: translateY(0px); }
@@ -70,6 +72,7 @@ const Role = styled.h2`
   color: var(--primary-color);
   margin-bottom: 1.5rem;
   font-weight: 500;
+  min-height: 2em; /* Prevent layout shift on lang switch if lengths differ significantly */
 `;
 
 const Description = styled.p`
@@ -137,29 +140,37 @@ const ImageWrapper = styled.div`
   position: relative;
   z-index: 1;
   animation: ${float} 6s ease-in-out infinite;
+  padding: 1rem; /* Space for the border offset */
 
-  /* Abstract Shape behind image */
+  /* Decorative frame behind image matching the new shape */
   &::after {
     content: '';
     position: absolute;
     width: 100%;
     height: 100%;
     border: 2px solid var(--primary-color);
-    border-radius: 50% 50% 0 50%;
+    border-radius: var(--radius-md);
     top: 20px;
     right: -20px;
     z-index: -1;
-    opacity: 0.5;
+    opacity: 0.3;
+    transition: all 0.3s ease;
+  }
+
+  &:hover::after {
+    top: 10px;
+    right: -10px;
+    opacity: 0.8;
   }
 `;
 
-const ProfileImage = styled.img`
+const ProfileImage = styled(ParallaxImage)`
   width: 400px;
   height: 400px;
   object-fit: cover;
-  border-radius: 50% 50% 0 50%; /* Modern shape */
-  border: 5px solid var(--bg-secondary);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  border-radius: var(--radius-md); /* Consistent rounded corners */
+  border: 2px solid rgba(108, 99, 255, 0.5); /* Subtle neon border */
+  box-shadow: 0 0 30px rgba(108, 99, 255, 0.2), 0 20px 40px rgba(0,0,0,0.4);
 
   @media (max-width: 768px) {
     width: 300px;
@@ -168,35 +179,36 @@ const ProfileImage = styled.img`
 `;
 
 const Hero: React.FC = () => {
-    return (
-        <Section>
-            <Content>
-                <Greeting>HELLO I'M</Greeting>
-                <Name>Xavier Cedeño</Name>
-                <Role>Web Developer & Systems Analyst</Role>
-                <Description>
-                    I build high-quality web applications with a focus on modern design,
-                    clean code, and exceptional user experiences.
-                </Description>
+  const { t } = useLanguage();
 
-                <ButtonGroup>
-                    <PrimaryButton href="/assets/cv.pdf" target="_blank">
-                        Download CV
-                    </PrimaryButton>
-                    <SocialLinks>
-                        <SocialIcon href="#"><FaFacebookF /></SocialIcon>
-                        <SocialIcon href="#"><FaTwitter /></SocialIcon>
-                        <SocialIcon href="https://www.linkedin.com/in/xavier-cedeno"><FaLinkedinIn /></SocialIcon>
-                    </SocialLinks>
-                </ButtonGroup>
-            </Content>
+  return (
+    <Section>
+      <Content>
+        <Greeting>{t('hero.greeting')}</Greeting>
+        <Name>Xavier Cedeño</Name>
+        <Role>{t('hero.role')}</Role>
+        <Description>
+          {t('hero.description')}
+        </Description>
 
-            <ImageWrapper>
-                {/* Using a placeholder or the existing image path found in Navbar.css earlier */}
-                <ProfileImage src="/assets/images/xavier.jpg" alt="Xavier Cedeño" />
-            </ImageWrapper>
-        </Section>
-    );
+        <ButtonGroup>
+          <PrimaryButton href="/assets/cv.pdf" target="_blank">
+            {t('nav.download_cv')}
+          </PrimaryButton>
+          <SocialLinks>
+            <SocialIcon href="#"><FaFacebookF /></SocialIcon>
+            <SocialIcon href="https://x.com/xavitoxy"><FaXTwitter /></SocialIcon>
+            <SocialIcon href="https://www.linkedin.com/in/xavier-cede%C3%B1o-02a750243/"><FaLinkedinIn /></SocialIcon>
+          </SocialLinks>
+        </ButtonGroup>
+      </Content>
+
+      <ImageWrapper>
+        {/* Using a placeholder or the existing image path found in Navbar.css earlier */}
+        <ProfileImage src="/assets/images/xavier.jpg" alt="Xavier Cedeño" />
+      </ImageWrapper>
+    </Section>
+  );
 };
 
 export default Hero;

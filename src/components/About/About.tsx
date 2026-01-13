@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { experienceData } from '../../data/ExperienceData';
 import { educationData } from '../../data/EducationData';
 import { useLanguage } from '../../context/LanguageContext';
+import ParallaxImage from '../ParallaxImage/ParallaxImage';
 
 const Section = styled.section`
   padding: 4rem 2rem;
@@ -218,20 +219,29 @@ const ModalDescription = styled.div`
   }
 `;
 
-const InteractiveLogo = styled.img`
+const LogoWrapper = styled.div`
   width: 50px;
   height: 50px;
-  object-fit: cover;
-  border-radius: 50%;
   margin-right: 1rem;
+  border-radius: 50%;
   border: 2px solid var(--primary-color);
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+  flex-shrink: 0; 
+  /* Added flex-shrink to prevent squishing if flex container */
 
   &:hover {
     transform: scale(1.15);
     box-shadow: 0 0 12px var(--primary-color);
   }
+`;
+
+const InteractiveLogo = styled(ParallaxImage)`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block; /* Removes bottom space */
 `;
 
 const ModalLogo = styled.img`
@@ -273,12 +283,9 @@ const About: React.FC<AboutProps> = () => {
           <Item key={index}>
             <ItemHeaderRow>
               {exp.image && (
-                <InteractiveLogo
-                  src={exp.image}
-                  alt={exp.company}
-                  onClick={() => openModal(exp)}
-                  title="Click for details"
-                />
+                <LogoWrapper onClick={() => openModal(exp)} title="Click for details">
+                  <InteractiveLogo src={exp.image} alt={exp.company} />
+                </LogoWrapper>
               )}
               <ItemHeader>
                 <ItemTitle>{exp.position[language]}</ItemTitle>

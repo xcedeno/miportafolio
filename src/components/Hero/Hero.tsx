@@ -110,6 +110,11 @@ const PrimaryButton = styled.a`
     transform: translateY(-3px);
     box-shadow: 0 15px 25px rgba(108, 99, 255, 0.4);
   }
+
+  @media (max-width: 768px) {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
 `;
 
 const SocialLinks = styled.div`

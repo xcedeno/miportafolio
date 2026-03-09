@@ -1,132 +1,113 @@
-#about {
-    padding: 2rem;
-    background-color: #f9f9f915;
-    opacity: 0; /* Inicialmente oculto */
-    animation: fadeIn 1.5s forwards; /* Aplicar animación */
-    display: flex;
-    flex-direction: column;
-    /* Asegura que ocupe toda la altura del viewport */
-
-}
-p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-    color: white;
+.about {
+  padding: 6rem 1.5rem;
+  background: var(--bg);
 }
 
-
-.experience-section .education-section {
-    margin-top: 2rem;
+.about__container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 3fr 5fr;
+  gap: 4rem;
+  align-items: center;
 }
 
-.experience-toggle-button {
-    padding: 0.5rem 1rem;
-    background-color: #007bff00;
-    color: rgb(49, 199, 19);
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
+.about__image-wrapper {
+  position: relative;
 }
 
-.experience-toggle-button:hover {
-    background-color: #20bb1b;
-    color: white;
+.about__image-container {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  box-shadow: var(--shadow-lg);
 }
 
-.experience-cards { 
-display: flex; /* Asegura que las tarjetas se alineen horizontalmente */
-gap: 1rem;
-margin-top: 1rem;
-margin-right: 2rem; /* Añade un margen derecho para evitar el desbordamiento */
-max-height: 0;
-overflow: hidden;
-transition: max-height 0.5s ease, opacity 0.5s ease;
-opacity: 0;
-box-sizing: border-box;
+.about__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
-.experience-cards.expanded {
-max-height: 1000px; /* Ajusta este valor según el contenido */
-opacity: 1;
+.about__image-container:hover .about__image {
+  transform: scale(1.05);
 }
 
-.experience-cards > * {
-flex: 1 1 calc(25% - 1rem); /* Tres tarjetas por fila */
-min-width: 150px; /* Ancho mínimo de cada tarjeta */
-height: 200px;
-box-sizing: border-box;
+.about__decor {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--primary);
+  border-radius: var(--radius-lg);
+  top: 15px;
+  left: -15px;
+  z-index: 0;
+  opacity: 0.3;
 }
 
-/* Estilos para la sección de Formación Profesional */
-.education-section button {
-    padding: 0.5rem 1rem;
-    background-color: #00050100; /* Color verde para diferenciar */
-    color: rgb(49, 199, 19);
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
+.about__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-.education-toggle-button:hover {
-background-color: #218838;
-color: white;
+.about__text {
+  color: var(--text);
+  font-size: 1.05rem;
+  line-height: 1.7;
 }
 
-.education-cards {
-display: flex;
-flex-wrap: wrap;
-gap: 1rem;
-margin-top: 1rem;
-max-height: 0;
-overflow: hidden;
-transition: max-height 0.5s ease, opacity 0.5s ease;
-opacity: 0;
-box-sizing: border-box;
+.about__highlight {
+  color: var(--primary);
+  font-weight: 600;
 }
 
-.education-cards.expanded {
-max-height: 1000px; /* Ajusta este valor según el contenido */
-opacity: 1;
-box-sizing: border-box;
+.about__cta {
+  margin-top: 1rem;
+  align-self: flex-start;
+  padding: 0.75rem 2rem;
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.education-cards > * {
-flex: 1 1 calc(25% - 1rem); /* Tres tarjetas por fila */
-min-width: 150px; /* Ancho mínimo de cada tarjeta */
-}
-/* Media queries para ajustar el tamaño de las tarjetas en diferentes resoluciones */
-@media (max-width: 1200px) {
-    .education-cards > *, .experience-cards > * {
-        flex: 1 1 calc(33.333% - 1rem); /* Tres tarjetas por fila */
-    }
-}
-
-@media (max-width: 992px) {
-    .education-cards > *, .experience-cards > * {
-        flex: 1 1 calc(50% - 1rem); /* Dos tarjetas por fila */
-    }
+.about__cta:hover {
+  background: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgb(37 99 235 / 0.2);
+  transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
-    .education-cards > *, .experience-cards > * {
-        flex: 1 1 calc(50% - 1rem); /* Una tarjeta por fila */
-
-    }
-    p {
-        font-size: 0.7rem;
-        line-height: 1.6;
-        margin-bottom: 1rem;
-        color: white;
-        text-align: justify;
-    }
-}
-@media (max-width: 576px) {
-    .education-cards > *, .experience-cards > * {
-        flex: 1 1 calc(100% - 1rem); /* Una tarjeta por fila */
-    }
+  .about__container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+  }
+  
+  .about__image-wrapper {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .about__decor {
+    top: 10px;
+    left: 10px;
+  }
+  
+  .about__cta {
+    align-self: center;
+  }
 }

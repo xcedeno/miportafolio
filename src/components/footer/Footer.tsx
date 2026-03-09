@@ -1,60 +1,38 @@
 import React from 'react';
-import styled from 'styled-components';
-import { FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa';
-
-const FooterContainer = styled.footer`
-  background-color: var(--bg-secondary);
-  padding: 2rem;
-  text-align: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-`;
-
-const FooterContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-`;
-
-const Copyright = styled.p`
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-`;
-
-const SocialIcons = styled.div`
-  display: flex;
-  gap: 1.5rem;
-`;
-
-const IconLink = styled.a`
-  color: var(--text-secondary);
-  font-size: 1.5rem;
-  transition: color 0.3s ease, transform 0.2s ease;
-
-  &:hover {
-    color: var(--primary-color);
-    transform: translateY(-3px);
-  }
-`;
+import { Github, Linkedin, Twitter } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
+import './Footer.css';
 
 const Footer: React.FC = () => {
+  const { t } = useLanguage();
   return (
-    <FooterContainer>
-      <FooterContent>
-        <SocialIcons>
-          <IconLink href="https://www.linkedin.com/in/xavier-cede%C3%B1o-02a750243/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <FaLinkedin />
-          </IconLink>
-          <IconLink href="https://github.com/xcedeno" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <FaGithub />
-          </IconLink>
-          <IconLink href="https://twitter.com/xavier-cedeno" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-            <FaTwitter />
-          </IconLink>
-        </SocialIcons>
-        <Copyright>&copy; {new Date().getFullYear()} Xavier Cedeño. All rights reserved.</Copyright>
-      </FooterContent>
-    </FooterContainer>
+    <footer className="footer">
+      <div className="footer__content">
+        <div className="footer__logo">
+          Xavier<span>Cedeño</span>
+        </div>
+        
+        <div className="footer__socials">
+          <a href="https://linkedin.com/in/xavier-cede%C3%B1o-02a750243" target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="LinkedIn">
+            <Linkedin size={18} />
+          </a>
+          <a href="https://github.com/xcedeno" target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="GitHub">
+            <Github size={18} />
+          </a>
+          <a href="https://x.com/xavitoxy" target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="Twitter">
+            <Twitter size={18} />
+          </a>
+        </div>
+        
+        <p className="footer__copyright">
+          &copy; {new Date().getFullYear()} Xavier Cedeño. {t('footer.rights')}
+        </p>
+        
+        <p className="footer__made-with">
+          {t('footer.madeWith')} <span className="footer__heart">❤️</span>
+        </p>
+      </div>
+    </footer>
   );
 };
 

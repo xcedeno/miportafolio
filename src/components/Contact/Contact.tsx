@@ -27,13 +27,13 @@ const Contact: React.FC = () => {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <a href="mailto:tuemail@ejemplo.com" className="contact__card">
+            <a href="mailto:xcedeno281@gmail.com" className="contact__card">
               <div className="contact__card-icon">
                 <Mail size={24} />
               </div>
               <div className="contact__card-content">
                 <h3>Email</h3>
-                <p>tucorreo@ejemplo.com</p>
+                <p>xcedeno281@gmail.com</p>
               </div>
             </a>
 

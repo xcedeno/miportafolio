@@ -1,199 +1,124 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
-import { FaBars, FaTimes, FaGlobe } from 'react-icons/fa';
+import { Menu, X, Moon, Sun, Download, Globe } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
+import './Navbar.css';
 
-const NavContainer = styled.nav<{ $scrolled: boolean }>`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 80px;
-  background: ${({ $scrolled }) =>
-    $scrolled ? 'rgba(15, 15, 22, 0.95)' : 'transparent'};
-  backdrop-filter: ${({ $scrolled }) =>
-    $scrolled ? 'blur(10px)' : 'none'};
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 2rem;
-  z-index: 1000;
-  transition: all 0.3s ease-in-out;
-  border-bottom: 1px solid ${({ $scrolled }) =>
-    $scrolled ? 'rgba(255, 255, 255, 0.05)' : 'transparent'};
-`;
-
-const Logo = styled.div`
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-
-  span {
-    color: var(--primary-color);
-  }
-`;
-
-const NavMenu = styled.ul<{ $isOpen: boolean }>`
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  list-style: none;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    position: absolute;
-    top: 80px;
-    left: 0;
-    width: 100%;
-    background: var(--bg-secondary);
-    padding: 2rem 0;
-    transition: transform 0.3s ease-in-out;
-    transform: ${({ $isOpen }) => ($isOpen ? 'translateY(0)' : 'translateY(-150%)')};
-    opacity: ${({ $isOpen }) => ($isOpen ? '1' : '0')};
-    z-index: 999;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  }
-`;
-
-const NavItem = styled.li`
-  font-weight: 500;
-  font-size: 1rem;
-`;
-
-const StyledNavLink = styled(NavLink)`
-  color: var(--text-secondary);
-  text-decoration: none;
-  transition: color 0.2s ease;
-  position: relative;
-
-  &:hover,
-  &.active {
-    color: var(--primary-color);
-  }
-
-  &.active::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: var(--primary-color);
-    box-shadow: 0 0 10px var(--primary-color);
-  }
-`;
-
-const CTAButton = styled.button`
-  background: transparent;
-  border: 1px solid var(--text-primary);
-  color: var(--text-primary);
-  padding: 0.5rem 1.5rem;
-  border-radius: 50px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-
-  &:hover {
-    background: var(--primary-color);
-    border-color: var(--primary-color);
-    box-shadow: 0 0 15px rgba(108, 99, 255, 0.4);
-  }
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
-
-const LangButton = styled.button`
-  background: transparent;
-  border: none;
-  color: var(--text-primary);
-  font-size: 1.2rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem;
-  transition: all 0.3s ease;
-
-  &:hover {
-    color: var(--primary-color);
-    transform: scale(1.05);
-  }
-`;
-
-const MobileIcon = styled.div`
-  display: none;
-  font-size: 1.8rem;
-  color: var(--text-primary);
-  cursor: pointer;
-
-  @media (max-width: 768px) {
-    display: block;
-  }
-`;
+const navItems = [
+  { key: 'nav.home' as const, href: '#inicio' },
+  { key: 'nav.projects' as const, href: '#proyectos' },
+  { key: 'nav.experience' as const, href: '#experiencia' },
+  { key: 'nav.about' as const, href: '#sobre-mi' },
+  { key: 'nav.contact' as const, href: '#contacto' },
+];
 
 const Navbar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const { t, toggleLanguage, language } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
-  const { toggleLanguage, language, t } = useLanguage();
-  const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    if (typeof window !== 'undefined') {
+      return (localStorage.getItem('theme') as 'light' | 'dark') || 'light';
+    }
+    return 'light';
+  });
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const toggleTheme = () => {
+    setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
+  };
+
+  const scrollTo = (href: string) => {
+    setMenuOpen(false);
+    const el = document.querySelector(href);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
-    <NavContainer $scrolled={scrolled}>
-      <Logo onClick={() => navigate('/')}>
-        Xavier<span>Cedeño</span>
-      </Logo>
+    <>
+      <nav className={`navbar${scrolled ? ' scrolled' : ''}`} id="navbar">
+        <div className="navbar__logo" onClick={() => scrollTo('#inicio')}>
+          X<span>C</span>
+        </div>
 
-      <MobileIcon onClick={toggleMenu}>
-        {isOpen ? <FaTimes /> : <FaBars />}
-      </MobileIcon>
+        <ul className="navbar__links">
+          {navItems.map(item => (
+            <li key={item.href}>
+              <button
+                className="navbar__link"
+                onClick={() => scrollTo(item.href)}
+              >
+                {t(item.key)}
+              </button>
+            </li>
+          ))}
+        </ul>
 
-      <NavMenu $isOpen={isOpen}>
-        <NavItem>
-          <StyledNavLink to="/" onClick={() => setIsOpen(false)}>{t('nav.home')}</StyledNavLink>
-        </NavItem>
-        <NavItem>
-          <StyledNavLink to="/about" onClick={() => setIsOpen(false)}>{t('nav.about')}</StyledNavLink>
-        </NavItem>
-        <NavItem>
-          <StyledNavLink to="/projects" onClick={() => setIsOpen(false)}>{t('nav.portfolio')}</StyledNavLink>
-        </NavItem>
-        <NavItem>
-          <StyledNavLink to="/skills" onClick={() => setIsOpen(false)}>{t('nav.skills')}</StyledNavLink>
-        </NavItem>
-        <NavItem>
-          <CTAButton onClick={() => window.open('/assets/cv.pdf', '_blank')}>
-            {t('nav.download_cv')}
-          </CTAButton>
-        </NavItem>
-        <NavItem>
-          <LangButton onClick={toggleLanguage} aria-label="Toggle Language">
-            <FaGlobe />
-            <span style={{ fontSize: '0.9rem', fontWeight: 600 }}>
-              {language === 'es' ? 'EN' : 'ES'}
-            </span>
-          </LangButton>
-        </NavItem>
-      </NavMenu>
-    </NavContainer>
+        <div className="navbar__actions">
+          <button
+            className="navbar__theme-toggle"
+            onClick={toggleLanguage}
+            aria-label="Cambiar idioma"
+            title={language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
+          >
+            <Globe size={18} />
+          </button>
+          <button
+            className="navbar__theme-toggle"
+            onClick={toggleTheme}
+            aria-label="Cambiar tema"
+          >
+            {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
+          </button>
+          <a
+            className="navbar__cta"
+            href="/assets/cv.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Download size={14} style={{ marginRight: 6, verticalAlign: 'middle' }} />
+            {t('nav.downloadCv')}
+          </a>
+          <button
+            className="navbar__hamburger"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Menú"
+          >
+            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile menu */}
+      <div className={`navbar__mobile-menu${menuOpen ? ' open' : ''}`}>
+        {navItems.map(item => (
+          <button
+            key={item.href}
+            className="navbar__mobile-link"
+            onClick={() => scrollTo(item.href)}
+          >
+            {t(item.key)}
+          </button>
+        ))}
+        <a
+          className="navbar__mobile-cta"
+          href="/assets/cv.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {t('nav.downloadCv')}
+        </a>
+      </div>
+    </>
   );
 };
 

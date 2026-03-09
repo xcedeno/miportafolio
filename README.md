@@ -1,89 +1,102 @@
-# 🚀 Portfolio Profesional - XCedeño 
+# Xavier Cedeño — Developer Portfolio
 
-![React](https://img.shields.io/badge/React-20232a?style=for-the-badge&logo=react&logoColor=61DAFB)
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-![Styled Components](https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Portfolio Preview](/public/assets/images/og-image.jpg)
 
-Bienvenido al repositorio de mi portafolio profesional. Este proyecto es una aplicación web moderna, responsiva y bilingüe diseñada para mostrar mi experiencia, habilidades y proyectos en el desarrollo de software y análisis de sistemas.
+Un portafolio profesional de Desarrollo Full Stack construido con **React**,
+**TypeScript** y **Vite**, diseñado específicamente para maximizar la conversión
+ante reclutadores técnicos y clientes potenciales.
 
-## 🌟 Características Principales
+Este proyecto fue transformado de un diseño multipágina tradicional a una
+experiencia fluida "Single-Page" orientada a resultados, destacando métricas de
+impacto reales.
 
-*   **🌐 Soporte Bilingüe (Español/Inglés):** Implementación completa de i18n mediante `LanguageContext`. Todo el contenido, desde la navegación hasta los detalles de los proyectos, es traducible al instante con un solo clic.
-*   **🎨 UI/UX Moderna:** Diseño elegante y oscuro utilizando `styled-components` para un estilizado dinámico y mantenible.
-*   **📱 Diseño Responsivo:** Adaptable a dispositivos móviles, tablets y escritorio.
-*   **✨ Interacciones Dinámicas:**
-    *   **Sección About:** Iconos de empresas interactivos que abren un **Modal detallado** con información de la experiencia laboral.
-    *   **Efectos Hover:** Animaciones suaves en tarjetas de proyectos y botones.
-*   **📂 Gestión de Proyectos:** Separación clara entre proyectos de **Programación** y **Networking** con tarjetas informativas ricas en detalles.
+## ✨ Características Principales
 
-## 🛠️ Tecnologías Utilizadas
+- 🚀 **Single-Page Application (SPA)**: Navegación por scroll suave entre
+  secciones sin recargas.
+- 🌓 **Modo Claro y Oscuro**: Implementación nativa usando variables CSS y
+  `localStorage` para persistencia.
+- 🎬 **Animaciones Fluidas**: Componentes animados al hacer scroll usando
+  `framer-motion` (fade-in, stagger, escalado).
+- 📱 **Mobile-First Responsive**: Diseño adaptativo con tipografía fluida
+  escalable (`clamp()`).
+- 🎯 **Enfoque en Resultados (ROI)**: Secciones de Proyectos y Experiencia
+  estructuradas en modelo _Problema → Solución → Resultado_.
+- ⚡ **Alta Performance y SEO**: Metadatos Open Graph, etiquetas semánticas y
+  Puntuación Lighthouse optimizada.
 
-El proyecto está construido con un stack robusto y moderno:
+## 🛠️ Stack Tecnológico
 
-| Tecnología | Propósito |
-| :--- | :--- |
-| **React 18** | Biblioteca principal para la interfaz de usuario. |
-| **TypeScript** | Superset de JavaScript para un código tipado y seguro. |
-| **Vite** | Entorno de desarrollo ultrarrápido y bundler. |
-| **Styled Components** | Estilizado CSS-in-JS para componentes modulares. |
-| **React Icons** | Colección de iconos vectoriales ligeros. |
-| **React Router** | Enrutamiento dinámico SPA (Single Page Application). |
-
-## 🚀 Instalación y Ejecución
-
-Sigue estos pasos para correr el proyecto en tu entorno local:
-
-1.  **Clonar el repositorio:**
-    ```bash
-    git clone https://github.com/xcedeno/miportafolio.git
-    cd miportafolio
-    ```
-
-2.  **Instalar dependencias:**
-    ```bash
-    npm install
-    ```
-
-3.  **Ejecutar el servidor de desarrollo:**
-    ```bash
-    npm run dev
-    ```
-
-4.  **Construir para producción:**
-    ```bash
-    npm run build
-    ```
+- **Framework**: React 18 + Vite
+- **Lenguaje**: TypeScript
+- **Estilos**: CSS Vanilla (Variables, CSS Grid, Flexbox)
+- **Animaciones**: Framer Motion
+- **Iconografía**: Lucide React
 
 ## 📂 Estructura del Proyecto
 
-La arquitectura del proyecto está organizada para la escalabilidad:
-
-```
+```text
 src/
-├── 📂 components/      # Componentes reutilizables (Navbar, Footer, etc.)
-│   ├── 📂 About/       # Sección "Sobre Mí" con lógica de Modal
-│   ├── 📂 Hero/        # Sección principal con animación de iconos
-│   ├── 📂 Projects/    # Vista general de categorías de proyectos
-│   └── ...
-├── 📂 context/         # Contexto global (Manejo de Idioma)
-├── 📂 data/            # Datos estáticos bilingües (Experience, Education, Skills)
-├── 📂 screens/         # Pantallas completas (ProgrammingScreen, NetworkingScreen)
-├── 📜 App.tsx          # Punto de entrada principal y rutas
-└── 📜 index.css        # Estilos globales y variables CSS
+├── components/          # Componentes de la interfaz
+│   ├── About/           # Sección "Sobre Mí"
+│   ├── Contact/         # Formulario y links de contacto
+│   ├── Experience/      # Línea de tiempo profesional
+│   ├── footer/          # Pie de página
+│   ├── Hero/            # Sección principal de bienvenida
+│   ├── Navbar/          # Navegación fija con cambio de tema
+│   └── Projects/        # Tarjetas de proyectos (Grid)
+├── data/                # Datos estructurados (Listos para CMS)
+│   ├── experience.ts    # Historial laboral
+│   └── projects.ts      # Catálogo de proyectos
+├── styles/              # Sistema global de estilos
+│   └── globals.css      # Variables de tema Claro/Oscuro y utilidades
+├── App.tsx              # Componente raíz y Layout principal
+└── main.tsx             # Punto de entrada de la aplicación
 ```
 
-## 🧩 Detalles de Implementación
+## 🚀 Instalación y Despliegue Local
 
-### Sistema de Idiomas (`LanguageContext`)
-El cambio de idioma se maneja a través de un contexto global que provee el estado `language` ('es' | 'en') y la función `t()` para traducir textos fijos. Los datos complejos (como descripciones de trabajo) se almacenan como objetos `{ es: "...", en: "..." }` y se renderizan dinámicamente según el idioma seleccionado.
+Sigue estos pasos para correr el proyecto en tu entorno local:
 
-### Sección de Experiencia (`About.tsx`)
-Para mantener la interfaz limpia, la sección de experiencia muestra una línea de tiempo minimalista con los logos de las empresas. Al hacer clic en un logo, se activa un **Modal** que muestra:
-*   Cargo y Empresa
-*   Duración (con estilos destacados)
-*   Descripción detallada de responsabilidades
+1. **Clonar el repositorio:**
+   ```bash
+   git clone https://github.com/xcedeno/xcedeno-portfolio.git
+   cd xcedeno-portfolio
+   ```
+
+2. **Instalar dependencias:**
+   ```bash
+   npm install
+   ```
+
+3. **Iniciar el servidor de desarrollo:**
+   ```bash
+   npm run dev
+   ```
+   > Abre `http://localhost:5173` en tu navegador.
+
+4. **Kompilar para Producción:**
+   ```bash
+   npm run build
+   ```
+
+## 🧑‍💻 Personalización
+
+Para adaptar este portafolio a tus propios datos, modifica principalmente los
+siguientes archivos:
+
+- `src/data/projects.ts` (Tus proyectos y métricas)
+- `src/data/experience.ts` (Tu historial laboral)
+- `public/assets/cv.pdf` (Tu currículum vitae)
+- `public/assets/images/` (Tus fotografías y capturas de proyectos)
+
+## 📄 Licencia
+
+Este código fuente está disponible bajo la licencia [MIT](LICENSE). Siéntete
+libre de clonarlo, estudiarlo y utilizar las bases para tu propio portafolio
+profesional.
 
 ---
 
-Hecho con ❤️ por **XCedeño**
+Hecho con React + ❤️ por
+**[Xavier Cedeño](https://linkedin.com/in/xavier-cede%C3%B1o-02a750243)**

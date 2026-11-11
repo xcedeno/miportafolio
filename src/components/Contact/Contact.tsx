@@ -37,7 +37,7 @@ const Contact: React.FC = () => {
               </div>
             </a>
 
-            <a href="https://linkedin.com/in/xavier-cede%C3%B1o-02a750243" target="_blank" rel="noopener noreferrer" className="contact__card">
+            <a href="https://www.linkedin.com/in/xavier-febres-13777b120/" target="_blank" rel="noopener noreferrer" className="contact__card">
               <div className="contact__card-icon">
                 <Linkedin size={24} />
               </div>

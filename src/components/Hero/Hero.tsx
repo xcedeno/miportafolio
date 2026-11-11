@@ -28,7 +28,7 @@ const Hero: React.FC = () => {
     },
   };
 
-  const techStack = ['React', 'TypeScript', 'Node.js', 'Next.js', 'AWS', 'PostgreSQL'];
+  const techStack = ['React', 'TypeScript', 'Java / Spring Boot', 'Apache Kafka', 'PostgreSQL', 'Docker', 'Kubernetes'];
 
   const scrollTo = (href: string) => {
     const el = document.querySelector(href);
